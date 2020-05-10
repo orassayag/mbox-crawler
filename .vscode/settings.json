@@ -1,0 +1,20 @@
+{
+    "cSpell.words": [
+        "uneeded"
+    ],
+    "search.exclude": {
+        "**/.vscode": true,
+        "**/backup_sources": true,
+        "**/dist": true,
+        "**/misc": true,
+        "**/misc/": true,
+        "/misc/": true,
+        "misc/**": true,
+        "**/misc/**": true,
+        "**/node_modules": true,
+        "**/sources": true
+    },
+    "eslint.validate": [
+        "javascript"
+    ]
+}

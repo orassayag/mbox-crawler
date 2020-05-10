@@ -1,0 +1,59 @@
+{
+  "name": "emails-manager",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "keywords": [
+    "data",
+    "text",
+    "MBOX",
+    "mbox",
+    "email",
+    "email message",
+    "email messages",
+    "email address",
+    "emails",
+    "email addresses"
+  ],
+  "license": "UNLICENSED",
+  "author": "Or Assayag <orassayag@gmail.com>",
+  "contributors": [
+    {
+      "name": "Or Assayag",
+      "email": "orassayag@gmail.com",
+      "url": "https://github.com/orassayag"
+    }
+  ],
+  "files": [
+    "src",
+    ".eslintrc",
+    "package-lock.json",
+    "package.json",
+    "README.md"
+  ],
+  "main": "src/scripts/crawl-mbox-files.js",
+  "scripts": {
+    "crawl": "node src/scripts/crawl-mbox-files.script.js",
+    "diff": "node src/scripts/text-files-difference.script.js",
+    "search": "node src/scripts/search-email-addresses.script.js"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "dependencies": {
+    "babel-eslint": "^10.0.3",
+    "check-disk-space": "^2.1.0",
+    "eslint": "^6.8.0",
+    "fs-extra": "^8.1.0",
+    "line-by-line": "^0.1.6",
+    "mongoose": "^5.8.10",
+    "node-mbox": "^1.0.0",
+    "request": "^2.88.0",
+    "table": "^5.4.6",
+    "validator": "^12.2.0"
+  },
+  "devDependencies": {}
+}

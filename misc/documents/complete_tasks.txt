@@ -1,0 +1,255 @@
+Search & Crawl Email Addresses Script Tasks:
+============================================
+-Add new script file called "search-email-addresses.js". *
+-Add the script to the package.json file. *
+-Logic without Puppeteer.js (local text HTML page sources): *
+-Get 10 different types of bing.com sources. *
+-Get 10 different types of links HTML page sources. *
+
+Add Support For Crawling Multi MBOX Files Logics: *
+================================================= *
+-Open a backup project and initiate it. *
+-Change the "totalEstimateEmailMessagesCount" to be a determine number, not estimated. *
+-Add the index of total files count in the title of the MBOX file title. *
+-Set the start time in the first file process. *
+-Add to the statistic data a method to prapare display data. *
+-Add another 2 steps called "pre-process", and "post-process". *
+-Add the file name in each step. *
+
+Complete Extra Crawl MBOX Files Logics: *
+======================================= *
+-Fix bug with duplicates function. *
+-Test with amount of email addresses less then the minimum. *
+ (less than 99, less than 100, less than 101 + in the settings the limit is 99, and also 100, and also 101, for example). *
+-Handle case and test it - Where only one file created, or less then maximum email addresses collected. *
+-Add logic that if email messages counts equals - Display only one of them. *
+-Test with empty MBOX file (add validation of minimum size, and number of minimum email addresses - at least 1). *
+-Find new name to "lastTXTFilesCount". *
+-Remove all code-comments from all over the place, put them on tests.js file. *
+-Test errors during streaming. All error cases in each streaming file or append file, *
+ or any fs action (where the process can continue). *
+-Same sentence for all errors. *
+-Change all "email" to "emailAddress". *
+-Change all "emails" to "emailAddresses". *
+-Change all "emailsItems" to "emailMessages". *
+-Change all "array" key to "list". *
+-All places of "Emails" change to "Email Messages". *
+-All "Emails" change to "Email Addresses". *
+-Change the name of the script from "mbox-files-crawler" to "crawl-mbox-files" in all places. *
+-Decide if text / mbox files or MBOX / TXT files. *
+-In the summary description, add '.' in the end. *
+-Go through all initialize number, change from "0" to null. *
+-All places of "Emails" change to "EmailAddresses" - Cancelled. *
+-All "throw new Error" convert to errorUtils.js (Build new function for message only) - Cancelled. *
+-Remove the "error.utils" and throw exception. *
+-Find soulution foe the throwError function and regular "new Error". *
+-Change "email" to "email address" or "email message". *
+-In all places, first it's the email messages, than the email addresses. In this order. *
+-All "merged" and all "ed" change to present time. *
+-Do all the "ToDo" points around the code. *
+-Change "isNotEmptyArray" to "isExists". *
+-Change the "text-files-difference" script name. *
+-Change all url to upper case. *
+-Write plan to crawl email addresses script. *
+-Build a function that check multi parameters with multi error codes, and implement it on all the validations steps - Canccelled. *
+-Same function but to numbers. Implement it in settings, for example, and also on all the validation steps - Canccelled. *
+
+Complete Crawl MBOX Files Script: *
+================================= *
+-Convert the MergeData to MergeData and MergeRound, like ScanData and ScanRound. *
+-Validation in merge step. *
+-Add statistics parameters in each step of the progress (verifications and summary). *
+-In the final table of all summary, each parameter of number will be with comma. *
+-Each task will be activated by different script. *
+-Validation in validation step. *
+-Validation in finalize step. *
+-Change all "validate" actions to "validating". *
+-Add error number to "Unmatch scan results". *
+-In the scan step, check that the scan step have 2 rounds. *
+-In the merge step, check that at least 1 round exists. *
+-In the finalize step, check that all data elements exists. *
+-Write description on each step in the logic file. *
+-Add minimum file size validation. *
+-Fix setup validation future errors. *
+-In the scan step, check that at least 1 email address scaned. *
+-In each step, validate all results. *
+-Validation in scan step. *
+-Validation in crawl step. *
+-In the crawl step, check that at least 1 email address crwaled. *
+-In the end of development - Remove the backup_sources directory. *
+-Refactor MboxFileData and TextFileData to 1 class. *
+-Refactor all times fields to a class. *
+-In the summary step - Log all the results into a log file (key: value (comment) + new line). *
+-In the end, write a summary (with table) of all the statistics. *
+-Add comment that explain what it the meaning of the parameter. *
+-Include comment about the field in the object. *
+-Change the order of the summary writing file and the summary log, and add the summary file in the log. *
+-In the scan step, compare the "initiateScanLinesCount" to the scan lines count. *
+-Build a function to log summary into a text file in a more pretty way: *
+-Take the longest key length, add it 5, and complete with spaces for other keys. *
+-Rename the project to "EmailsManager". *
+-Go through all backups and rename the project. *
+-Move the "backup_sources" outside the project. *
+-Remove all "backup_sources" directory from all backups directories. *
+-Fix alphabetic order of the merged and lists of the emails. *
+-Convert all times to displayable times. *
+-Optimize all functions / method to receive 1 object parameter. *
+-Add missing validations in all utils functions (ToDo comments). *
+-Change the "createFileName" to be in the order of the parameter's use. *
+-On the logProgress - Change all parameters to have the comma function (check if its a number, of course). *
+-Create a function that check if array exists and have elements in it. *
+-Validate that if no mbox file, throw error. *
+-In merge.js there is a place to merge parts of the code to a method. *
+-Replace all numbers of tasks in '-'. *
+-Write instructions to use the script in the README file. *
+-Bring back colors utils. *
+-Move the enum function to separate file. *
+-Add main file to load multiply path (services, utils, models). *
+-On logics, refactor titles for each step with function "step". *
+-Change the return results to be the file. *
+-In each step use "process.stdout.write("hello: ");" to update the progress during the process. *
+-Global logic that repeats themselves - Convert to global functions. *
+-After the scan process, add another step called "confirm", to confirm all limits of the mbox files. *
+-Create the script name in system.enum.js file and use it in the settings. *
+-In the initiate step, create the directory with the same name on the dist directory. *
+-In the initiate step, validate that the directory with the same name on the source directory exists. *
+-Set up maximum count of emails, maximum lines count, and mbox file size validation. *
+-The statistics file name will be the same as the original file. *
+-In the initiate step, add validation of enough free space according to the number of mbox files to scan. *
+-In the beginning, add the list of files about to scan, filter only the mbox files. *
+-One step after the validation step, add the finalize step, which will include: *
+1. Verify that the final merge, the valid, the invalid files exists. *
+2. Remove all the temporary text files from the crawl step. *
+5. Add "final_all_emails" text file, with all email addresses, separated by break line (no date needed). *
+6. Add "merged_all_emails", a copy of the final_merged_file. *
+7. Add the current date to all the main files. *
+8. On the validation / all steps step move all settings to the settings file. *
+-Before the table log - Build a method that calculate a few statistics, like: *
+1. On merge step - Count the number of email addresses, calculate the total number of email addresses that have been removed. *
+2. In the end, subtract the start time from the end time, and calculate the total time of the entire process. *
+-In the end of each file process, delete the temporary files. *
+ Keep only the merged, statistics, valid, and invalid files. *
+-Delete all temporary files in the end of the process. *
+-In the beginning - Log the number of mbox files found, total width of all of them together. *
+-Color each major status change step. *
+-When finish to scan the entire mbox file, continue to the next step. *
+-The third step is to build and perform the following logic: *
+1. Loop on all text files. *
+2. Each fetch, inject all the email addresses array into set. *
+3. When the set reaches 5,000 emails, append it to a text file. *
+4. In the end, if less then 5,000, append the rest to a text file. *
+5. Repeat the process several times, each time duplicate the *
+   number of email addresses to reach, until it will be a one text file. *
+6. Each round list the round number, number of files, limit reached. *
+7. The name of the final file will be different. *
+-Functions that repeats themselves in several files - Move to global service. *
+-Logic that repeats itself in same file - Move to a local function. *
+-Display the list of all mbox files in the initiate step in *
+ table package, and the total files count that about to be crawled. *
+-In the final line of the table list the total number of files and the size of all files together. *
+-Limit the characters mbox file name in all places. *
+-In the setup step, validate all configurations, and add validation that the URL on the validation *
+ step is available and online (test it with sample email address for true and false). *
+-Store all the configurations in external files (by categories) (include the validation URL also there). *
+-Validate that the numbers in the settings are positive. *
+-Add validation to all configuration numbers, take it from VisualizationTool project. *
+-Change "statistics" to "summary" (file name and all). *
+-The next part is to scan each and every email address of the email addresses by request to check. *
+1. Check if the final file exists. *
+2. In a new email addresses array, all valid email addresses will be stored + count the valid email addresses. *
+3. All invalid email addresses will be counted for the summary in the end. *
+4. All invalid email addresses will be append to other file. *
+5. Sort the email addresses before writing to text file. *
+6. Get the email addresses count in each file, and size and the name of each file. *
+7. Limit the number of characters in the email address to display in the console line in the validation step. *
+-Add to the initiate step the check on the access of paths: *
+ https://nodejs.org/api/fs.html#fs_fs_access_path_mode_callback *
+-Add for size and name fields a display field. *
+-Add the initiate line number count to the scan data. *
+-Convert the scan data to be an object that contain scanRounds array. *
+-Refactor the validation step. *
+-Add percentage display to the 2 scan, the crawl, and the validate steps according to the following logic: *
+1. In scan step: Add lines counter for the mbox file. Then, in the first scan (line by line) calculate percentage with that. *
+   In the second step, according to the first scan email addresses count, calculate the percentage with that. *
+2. In the crawl step: calculate percentage according to the email addresses count. *
+3. In the validate step: calculate percentage according to the email addresses count. *
+-Move the "mbox-files-crawler-handler.service.js" to the email.utils file. *
+-Declare all the relevant variables: path of the file, number of lines to scan, ect. *
+-The first step is to count all lines, and count all email addresses, *
+ start and end time of process, get the file size and file name *
+-Compare it with the mbox package with the same process. *
+-The second step is to build and perform the following logic: *
+1. Scan a number of email addresses, and store them in string. *
+2. When reach to a number of email addresses, pause the stream. *
+3. Count the email addresses pulled out + the number of lines scanned so far. *
+4. Compare with original number. If invalid, throw exception. *
+5. Remove all duplicates email addresses from the array. *
+6. Append all email addresses stored in the array into a text file, separated by comma. *
+7. Count the number of text files with a counter. *
+8. Empty the lines string to avoid memory leak. *
+9. Resume the stream and continue to store the next number of lines. *
+10. Compare the number of lines scanned and the number of lines pulled out. *
+11. If the number of lines scanned or the number of email addresses pulled out not equals *
+    to the numbers from the first step, throw exception and stop the process. *
+-Change all "start / finish" comment step to "start end" with the step name. *
+-Re-arrange all paths from initiate step to avoid duplicate logic. *
+-Convert all to models and validators. *
+-For each mbox file, append all the valid email addresses from the last array into a final *
+ text file, named by the original mbox file name, into a special directory, *
+ separate each email address by break line. *
+-Add start time and end time, and total time that took, for each mbox
+ file (in addition to the total time of all the process files). *
+
+Not Relevant Tasks / Cancelled Tasks:
+=====================================
+-Handle case of exceptions.
+-Remove the summary object from the file object.
+-In each step, check that the element data exists.
+-In each step, compare the number of email addresses to the first scan number of email addresses. If unmatch - Throw error.
+-Convert the summary keys to a new method - 1. Upper first letter. 2. Split capital letters.
+-In the finalize step, create a function to validate all results.
+-Go through all places and pull out objects from duplicate "this.file".
+-Change the statistic parameter that has more then one number to be an object.
+-Re-number all the tasks order.
+-Add timestamp of the status line.
+-Change the statistic parameters to be objects.
+1. Convert all text files objects into an array.
+2. Remove the "final_merged" file from the merge step in the finalize step.
+-Within each error case, add exception or error that could happen and test it.
+-Throw exceptions in random places in the steps, and see that happens. Fix if needed.
+1. Scan all the text files, get the number of email addresses and the number of lines.
+2. Compare with the number from the first step.
+3. Read all the text files.
+4. Store all the scanned lines in an array.
+5. Store the number of lines scanned and the number of email addresses scanned for the summary in the end.
+6. Compare the number of emails, number of lines of the file, with the first scan. If not equal, throw exception.
+-The forth step is to convert all the scanned lines array into an array of email addresses.
+-From the new email addresses array, remove all the duplicates email addresses.
+-Store the number of email addresses (after the duplicates has been removed) for the summary in the end.
+1. Scan each text file.
+2. Get out all the email addresses.
+3. Move them to set, to remove duplicates.
+4. Inject them into final array.
+5. In the end, repeat the process once again (convert to set) in the final array.
+-Remove the "test.js" file after everything is working.
+-Add support for diff between several text files that contains email addresses list.
+ (Add identical count and diff count).
+-Base text file, and new text file to find diffs.
+-Also, build logic to append new text file to old file.
+-Also, build logic to append new text file to old file, and delete the old file.
+-In the final merged step, make a copy with the data today for backup purposes reasons.
+-Add support for diff between 2 text files that contains email addresses list.
+ (Add identical count and diff count).
+-Build a logic to merge between 2 text files.
+-If not working (memory leak):
+1. Convert the original mbox file to source file.
+2. Check if it's mbox file or text file mode according to the script.
+3. Merge the old merged file and the new merge file, and build the same logic as the mbox file.
+4. Upgrade the mbox steps to support text files according to the script.
+-Rename the final merge file to "all_emails" with the date of today.
+ This file need to be kept with the MBOX files.
+-Merge Text Files Task:
+-Add support for merge between 2 text files that contains email addresses lists.
+ (Add duplicate count and diff count).
+-Remove duplicates.
+-Pull out summary file.
