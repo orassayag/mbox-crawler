@@ -1,4 +1,4 @@
-const { Color } = require('../../core/enums/files/colors.enum');
+const { ColorCode } = require('../../core/enums');
 
 class ColorUtils {
 
@@ -9,9 +9,8 @@ class ColorUtils {
         if (!message) {
             return '';
         }
-        return `${Color[`Fg${color}`]}${message}${Color.Reset}`;
+        return `${ColorCode[`Fg${color}`]}${message}${ColorCode.Reset}`;
     }
 }
 
-const colorUtils = new ColorUtils();
-module.exports = colorUtils;
+module.exports = new ColorUtils();

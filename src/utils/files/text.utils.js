@@ -1,14 +1,9 @@
-const url = require('url');
+const regexUtils = require('../files/regex.utils');
 const validationUtils = require('../files/validation.utils');
 
 class TextUtils {
 
     constructor() {
-        // ToDo: Move to regex utils.
-        this.englishLettersRegex = /^[a-zA-Z\\-]+$/;
-        this.URLAddressRegex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
-        this.emailAddressesRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/gi;
-        this.numberCommasRegex = /\B(?=(\d{3})+(?!\d))/g;
         this.bytes = 1024;
         this.sizesList = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
     }
@@ -18,16 +13,7 @@ class TextUtils {
         if (!validationUtils.isExists(data)) {
             return [];
         }
-        // ToDo: Move to regex utils.
-        return data.toString().match(this.emailAddressesRegex);
-    }
-
-    getURLAddresses(data) {
-        if (!validationUtils.isExists(data)) {
-            return [];
-        }
-        // ToDo: Move to regex utils.
-        return data.toString().match(this.URLAddressRegex);
+        return data.toString().match(regexUtils.emailAddressesRegex);
     }
 
     // This method convert a given number to display comma number.
@@ -35,8 +21,7 @@ class TextUtils {
         if (!validationUtils.isValidNumber(number)) {
             return '';
         }
-        // ToDo: Move to regex utils.
-        return number.toString().replace(this.numberCommasRegex, ',');
+        return number.toString().replace(regexUtils.numberCommasRegex, ',');
     }
 
     // This method convert bytes number to megabyte display number.
@@ -44,7 +29,6 @@ class TextUtils {
         if (!validationUtils.isValidNumber(bytes)) {
             return null;
         }
-
         if (bytes === 0) {
             return '0 Bytes';
         }
@@ -112,7 +96,6 @@ class TextUtils {
         if (!validationUtils.isExists(list)) {
             return [];
         }
-
         return list.sort((a, b) => {
             const nameA = a.toLowerCase(),
                 nameB = b.toLowerCase();
@@ -159,42 +142,35 @@ class TextUtils {
         return list.reduce((a, b) => a + (b[key] || 0), 0);
     }
 
-    getRandomKeyFromArray(list) {
-        if (!validationUtils.isExists(list)) {
+    toLowerCase(text) {
+        if (!text) {
             return '';
         }
-        return list[Math.floor(Math.random() * list.length)];
+        return text.toLowerCase();
     }
 
-    isEnglishKey(key) {
-        return this.englishLettersRegex.test(key);
-    }
-
-    getDomainFromURLAddress(URLAddress) {
-        if (!validationUtils.isExists(URLAddress)) {
+    removeAllCharacters(text, target) {
+        if (!text) {
             return '';
         }
-
-        let domain = '';
-        try {
-            domain = url.parse(URLAddress.toLowerCase().trim()).hostname;
-        } catch (error) {}
-
-        // Remove the 'www' prefix if exists.
-        if (domain && domain.startsWith('www')) {
-            domain = domain.split('.').slice(1).join('.');
-        }
-        return domain;
+        return text.split(target).join('');
     }
 
-    getMergedLists(data) {
-        const { originalList, newList } = data;
-        if (!originalList || !validationUtils.isExists(newList)) {
-            return originalList;
+    addBackslash(text) {
+        if (!text) {
+            return '';
         }
-        return originalList.concat(newList);
+        return `${text}/`;
+    }
+
+    getBackupName(data) {
+        const { applicationName, date, title, index } = data;
+        return `${applicationName}_${date}-${(index + 1)}${title ? `-${title}` : ''}`;
+    }
+
+    validateEmailAddress(emailAddress) {
+        return regexUtils.validateEmailAddressRegex.test(emailAddress);
     }
 }
 
-const textUtils = new TextUtils();
-module.exports = textUtils;
+module.exports = new TextUtils();

@@ -1,4 +1,6 @@
 const fs = require('fs-extra');
+const pathUtils = require('./path.utils');
+const globalUtils = require('../../utils/files/global.utils');
 
 class FileUtils {
 
@@ -8,42 +10,24 @@ class FileUtils {
         return await fs.readFile(targetPath, 'utf-8');
     }
 
-    // This method check if a receive target path is exist.
     async isPathExists(targetPath) {
         // Check if the path parameter was received.
         if (!targetPath) {
-            throw new Error(`targetPath not received: ${targetPath} (1000000)`);
+            throw new Error(`targetPath not received: ${targetPath} (1000058)`);
         }
-
         // Check if the path parameter exists.
-        if (!await fs.exists(targetPath)) {
-            throw new Error(`targetPath not exists: ${targetPath} (1000001)`);
+        try {
+            return await fs.stat(targetPath);
         }
-    }
-
-    // This method check if a receive target path is accessible.
-    async isPathAccessible(targetPath) {
-        // Verify that the path exists.
-        await this.isPathExists(targetPath);
-
-        // Check if the path is readable.
-        const errorRead = await fs.access(targetPath, fs.constants.R_OK);
-        if (errorRead) {
-            throw new Error(`targetPath not readable: ${targetPath} (1000002)`);
-        }
-
-        // Check if the path is writable.
-        const errorWrite = await fs.access(targetPath, fs.constants.W_OK);
-        if (errorWrite) {
-            throw new Error(`targetPath not writable: ${targetPath} (1000003)`);
+        catch (error) {
+            return false;
         }
     }
 
     // This method remove all files from a given target path.
     async emptyDirectory(targetPath) {
         // Verify that the path exists.
-        await this.isPathExists(targetPath);
-
+        globalUtils.isPathExistsError(targetPath);
         // Empty the directory.
         await fs.emptyDir(targetPath);
     }
@@ -51,85 +35,87 @@ class FileUtils {
     // This method return all the files in a given target path.
     async getDirectoryFiles(targetPath) {
         // Verify that the path exists.
-        await this.isPathExists(targetPath);
-
+        globalUtils.isPathExistsError(targetPath);
         // Get all the files.
         return await fs.readdir(targetPath);
     }
 
-    // This method return the file size.
-    async getFileSize(targetPath) {
-        // Verify that the path exists.
-        await this.isPathExists(targetPath);
-
-        // Return file size.
-        return (await fs.stat(targetPath)).size;
-    }
-
     async readFile(targetPath) {
         // Verify that the path exists.
-        await this.isPathExists(targetPath);
-
+        globalUtils.isPathExistsError(targetPath);
         // Return the file content.
         return await this.read(targetPath);
     }
 
     async readFileIfExists(targetPath) {
-        // Check if the path exists. Only if so, return the data.
-        if (await fs.exists(targetPath)) {
-            // Return the file content.
+        // Check if the file exists.
+        if (await this.isPathExists(targetPath)) {
             return await this.read(targetPath);
         }
-        return null;
     }
 
     async createDirectory(targetPath) {
         if (!targetPath) {
             return;
         }
-
-        if (!await fs.exists(targetPath)) {
+        if (!await this.isPathExists(targetPath)) {
             await fs.mkdir(targetPath, { recursive: true });
         }
     }
 
     async appendFile(data) {
         const { targetPath, message } = data;
-
         if (!targetPath) {
-            throw new Error(`targetPath not found: ${targetPath} (1000058)`);
+            throw new Error(`targetPath not found: ${targetPath} (1000059)`);
         }
-
         if (!message) {
-            throw new Error(`message not found: ${message} (1000018)`);
+            throw new Error(`message not found: ${message} (1000060)`);
         }
-
+        if (!await this.isPathExists(targetPath)) {
+            await fs.promises.mkdir(pathUtils.getDirName(targetPath), { recursive: true }).catch();
+        }
         // Append the message to the file.
         await fs.appendFile(targetPath, message);
     }
 
-    async renameFile(data) {
-        const { basePath, targetPath } = data;
-
-        if (!basePath) {
-            throw new Error(`basePath not found: ${basePath} (1000059)`);
-        }
-
-        if (!targetPath) {
-            throw new Error(`targetPath not found: ${targetPath} (1000019)`);
-        }
-
-        // Verify that the base path exists.
-        await this.isPathExists(basePath);
-
-        // Rename the path.
-        await fs.rename(basePath, targetPath);
+    async removeFile(targetPath) {
+        // Verify that the path exists.
+        globalUtils.isPathExistsError(targetPath);
+        // Remove the file.
+        await fs.unlink(targetPath);
     }
 
-    async getFileLinesCount(targetPath) {
-        // Verify that the path exists.
-        await this.isPathExists(targetPath);
+    async removeDirectoryIfExists(targetPath) {
+        if (!await this.isPathExists(targetPath)) {
+            await fs.remove(targetPath);
+        }
+    }
 
+    async createDirectoryIfNotExists(targetPath) {
+        if (!await this.isPathExists(targetPath)) {
+            await fs.mkdir(targetPath);
+        }
+    }
+
+    async copyDirectory(sourcePath, targetPath, filterFunction) {
+        await fs.copy(sourcePath, targetPath, { filter: filterFunction });
+    }
+
+    isDirectoryPath(path) {
+        const stats = fs.statSync(path);
+        return stats.isDirectory();
+    }
+
+    async getFileSize(targetPath) {
+        // Verify that the path exists.
+        globalUtils.isPathExistsError(targetPath);
+        // Return file size.
+        return (await fs.stat(targetPath)).size;
+    }
+
+    getFileLinesCount(targetPath) {
+        // Verify that the path exists.
+        globalUtils.isPathExistsError(targetPath);
         return new Promise(resolve => {
             let i;
             let count = 0;
@@ -147,14 +133,19 @@ class FileUtils {
         });
     }
 
-    async removeFile(targetPath) {
-        // Verify that the path exists.
-        await this.isPathExists(targetPath);
-
-        // Remove the file.
-        await fs.unlink(targetPath);
+    async renameFile(data) {
+        const { basePath, targetPath } = data;
+        if (!basePath) {
+            throw new Error(`basePath not found: ${basePath} (1000061)`);
+        }
+        if (!targetPath) {
+            throw new Error(`targetPath not found: ${targetPath} (1000062)`);
+        }
+        // Verify that the base path exists.
+        globalUtils.isPathExistsError(basePath);
+        // Rename the path.
+        await fs.rename(basePath, targetPath);
     }
 }
 
-const fileUtils = new FileUtils();
-module.exports = fileUtils;
+module.exports = new FileUtils();

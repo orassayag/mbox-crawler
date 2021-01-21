@@ -1,12 +1,6 @@
 class ValidationUtils {
 
-    constructor() {
-        // ToDo: Build a file that will contain all regex expressions,
-        // and for each it will has regular expression tester method.
-        // ToDo: Move to regex utils.
-        this.URLAddressRegex = new RegExp('^(https?:\\/\\/)?((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|((\\d{1,3}\\.){3}\\d{1,3}))(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*(\\?[;&a-z\\d%_.~+=-]*)?(\\#[-a-z\\d_]*)?$', 'i');
-        this.MongoConnectionStringRegex = new RegExp('^(mongodb:\/{2})localhost:(\d*)\/?(.*)');
-    }
+    constructor() { }
 
     // This method checks if a given value is a valid number and return the result.
     isValidNumber(number) {
@@ -21,29 +15,27 @@ class ValidationUtils {
         return Number(number) > 0;
     }
 
-    // This method checks if a given variable is a valid boolean and return the result.
-    isValidBoolean(boolean) {
-        return typeof boolean == typeof true;
-    }
-
     isValidDate(dateTime) {
         return dateTime instanceof Date;
-    }
-
-    isValidURL(URLAddress) {
-        // ToDo: Move to regex utils.
-        return this.URLAddressRegex.test(URLAddress);
-    }
-
-    isValidMongoConnectionString(mongoConnectionString) {
-        // ToDo: Move to regex utils.
-        return this.MongoConnectionStringRegex.test(mongoConnectionString);
     }
 
     isExists(list) {
         return list && list.length > 0;
     }
+
+    // This method validates that a given string exists in array list of specific types.
+    isValidEnum(data) {
+        // Validate the existence and validity of the validateEnumData parameters. If not exists, return false.
+        if (!data || !data.enum || !data.value) {
+            return false;
+        }
+        // Check if the value exists within a given array. Return false if not.
+        return Object.values(data.enum).indexOf(data.value) > -1;
+    }
+
+    isValidArray(variable) {
+        return Object.prototype.toString.call(variable) === '[object Array]';
+    }
 }
 
-const validationUtils = new ValidationUtils();
-module.exports = validationUtils;
+module.exports = new ValidationUtils();

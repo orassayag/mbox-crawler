@@ -18,6 +18,14 @@ src/shared/
 /src/shared
 src/shared
 
+# Misc.
+todo_tasks.txt
+complete_tasks.txt
+misc/documents/todo_tasks.txt
+misc/documents/complete_tasks.txt
+/misc/documents/todo_tasks.txt
+/misc/documents/complete_tasks.txt
+
 # Logs.
 /logs
 

@@ -1,4 +1,5 @@
 const { table } = require('table');
+const { Color } = require('../../core/enums');
 const colorUtils = require('../files/color.utils');
 const textUtils = require('../files/text.utils');
 const validationUtils = require('../files/validation.utils');
@@ -32,6 +33,16 @@ class LogUtils {
         }));
     }
 
+    logMagentaStatus(text) {
+        if (!text) {
+            return '';
+        }
+        return this.logColorStatus({
+            status: text,
+            color: Color.MAGENTA
+        });
+    }
+
     logTableData(data) {
         const { titles, tableData } = data;
         if (!validationUtils.isExists(titles) || !validationUtils.isExists(tableData)) {
@@ -42,6 +53,11 @@ class LogUtils {
             resultsData.push([...tableData[i]]);
         }
         this.log(table(resultsData));
+    }
+
+    logError(error) {
+        process.stdout.write('\n\r');
+        console.log(error);
     }
 
     logProgress(data) {
@@ -57,7 +73,7 @@ class LogUtils {
             value: result,
             charactersCount: 3
         });
-        process.stdout.write(`\r${textUtils.setLogStatus(result)}\n\r`);
+        process.stdout.write(`\r${textUtils.setLogStatus(result)}`);
     }
 
     logSpace() {
@@ -84,5 +100,4 @@ class LogUtils {
     }
 }
 
-const logUtils = new LogUtils();
-module.exports = logUtils;
+module.exports = new LogUtils();

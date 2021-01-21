@@ -6,13 +6,6 @@ class SystemUtils {
 
     constructor() { }
 
-    async sleep(secondsCount) {
-        if (!validationUtils.isValidNumber(secondsCount)) {
-            return;
-        }
-        return new Promise(resolve => setTimeout(resolve, secondsCount * 1000));
-    }
-
     async validateFreeSpace(fileSize) {
         if (!validationUtils.isValidNumber(fileSize)) {
             return;
@@ -23,12 +16,10 @@ class SystemUtils {
                 resolve(diskSpace);
             });
         });
-
         if ((diskSizes.free + (fileSize % 0.01)) > diskSizes.size) {
-            throw new Error('Not enough space to preform the process (1000045)');
+            throw new Error('Not enough space to preform the process (1000077)');
         }
     }
 }
 
-const systemUtils = new SystemUtils();
-module.exports = systemUtils;
+module.exports = new SystemUtils();

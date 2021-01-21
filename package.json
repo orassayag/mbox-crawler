@@ -1,5 +1,5 @@
 {
-  "name": "emails-manager",
+  "name": "mbox-crawler",
   "version": "1.0.0",
   "private": true,
   "description": "",
@@ -31,11 +31,10 @@
     "package.json",
     "README.md"
   ],
-  "main": "src/scripts/crawl-mbox-files.js",
+  "main": "src/scripts/crawl.script.js",
   "scripts": {
-    "crawl": "node src/scripts/crawl-mbox-files.script.js",
-    "diff": "node src/scripts/text-files-difference.script.js",
-    "search": "node src/scripts/search-email-addresses.script.js"
+    "backup": "node src/scripts/backup.script.js",
+    "start": "node src/scripts/crawl.script.js"
   },
   "browserslist": [
     ">0.2%",
@@ -44,16 +43,14 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "babel-eslint": "^10.0.3",
+    "babel-eslint": "^10.1.0",
     "check-disk-space": "^2.1.0",
-    "eslint": "^6.8.0",
-    "fs-extra": "^8.1.0",
+    "eslint": "^7.18.0",
+    "fs-extra": "^9.1.0",
     "line-by-line": "^0.1.6",
-    "mongoose": "^5.8.10",
     "node-mbox": "^1.0.0",
-    "request": "^2.88.0",
-    "table": "^5.4.6",
-    "validator": "^12.2.0"
+    "table": "^6.0.7",
+    "validator": "^13.5.2"
   },
   "devDependencies": {}
 }

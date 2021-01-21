@@ -8,7 +8,7 @@ class TimeUtils {
     // This method returns the current date without spaces.
     getCurrentDateNoSpaces() {
         const date = new Date();
-        return [date.getFullYear(), (textUtils.addLeadingZero(date.getMonth() + 1)), textUtils.addLeadingZero(date.getDate())].join('');
+        return [this.getYear(date), this.getMonth(date), this.getDay(date)].join('');
     }
 
     getDisplayDateTime(dateTime) {
@@ -18,12 +18,28 @@ class TimeUtils {
         return dateTime.toISOString().replace(/T/, ' ').replace(/\..+/, '');
     }
 
+    getDateNoSpaces() {
+        const date = new Date();
+        return [this.getDay(date), this.getMonth(date), this.getYear(date)].join('');
+    }
+
+    getDay(date) {
+        return textUtils.addLeadingZero(date.getDate());
+    }
+
+    getMonth(date) {
+        return textUtils.addLeadingZero(date.getMonth() + 1);
+    }
+
+    getYear(date) {
+        return date.getFullYear();
+    }
+
     getDifferenceTimeBetweenDates(data) {
         const { startDateTime, endDateTime } = data;
         if (!validationUtils.isValidDate(startDateTime) || !validationUtils.isValidDate(endDateTime)) {
             return null;
         }
-
         // Get the total time.
         const totalTime = textUtils.getPositiveNumber(endDateTime - startDateTime);
         // Get total seconds between the times.
@@ -51,7 +67,6 @@ class TimeUtils {
         if (!validationUtils.isValidDate(startDateTime)) {
             return [];
         }
-
         const endDateTime = new Date();
         const { totalTime, totalTimeDisplay } = this.getDifferenceTimeBetweenDates({
             startDateTime: startDateTime,
@@ -69,5 +84,4 @@ class TimeUtils {
     }
 }
 
-const timeUtils = new TimeUtils();
-module.exports = timeUtils;
+module.exports = new TimeUtils();

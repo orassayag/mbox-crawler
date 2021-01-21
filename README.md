@@ -1,6 +1,11 @@
 # Server
 
 Start to be built in January 2019.
+The goal of this project is to scan the gmail MBOX files (that contains all the inbox/sent email messages).
+The process will contain verification of the email messages count, and all email addresses count, validate
+each email address, and in the end, export all email addresses to a TXT file. Doing all of this,
+without any traditional database involved. Also, to build a script that merge couple of merged TXT files,
+and pull out their diff.
 
 ## Getting Started
 
@@ -12,14 +17,8 @@ Steps to view the solution:
 Crawl MBOX Files Script:
 ========================
 In terminal: npm run crawl
-
--Goal:
-The goal of this script is to crawl an MBOX file (or several MBOX files), pulling out all
-email addresses (to, from, cc, bcc, and in the body of the email), remove duplicates,
-and sort into a final list (with additional lists of valid and invalids lists).
-
 -Instructions & How to use:
-1. Place a valid MBOX file in the /sources/crawl-mbox-files directory.
+1. Place a valid MBOX file in the /sources/ directory.
 2. Wait for the process to end.
 3. Get the final TXT file with all the email addresses.
    For Google Contacts:
@@ -51,10 +50,14 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
-## Authors
+## Author
 
 * **Or Assayag** - *Initial work* - [orassayag](https://github.com/orassayag)
-Or Assayag <orassayag@gmail.com>
+* Or Assayag <orassayag@gmail.com>
+* GitHub: https://github.com/orassayag
+* StackOverFlow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
+* LinkedIn: https://il.linkedin.com/in/orassayag
+
 ## License
 
 This application has UNLICENSED License.

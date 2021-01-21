@@ -1,11 +1,17 @@
 {
     "cSpell.words": [
+        "Unmatch",
+        "dirents",
+        "gmail",
+        "mbox",
+        "orassayag",
         "uneeded"
     ],
     "search.exclude": {
         "**/.vscode": true,
         "**/backup_sources": true,
         "**/dist": true,
+        "/misc/backups/": true,
         "**/misc": true,
         "**/misc/": true,
         "/misc/": true,
