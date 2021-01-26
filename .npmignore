@@ -16,12 +16,13 @@ build/
 build
 
 # Misc.
-todo_tasks.txt
-complete_tasks.txt
-misc/documents/todo_tasks.txt
-misc/documents/complete_tasks.txt
-/misc/documents/todo_tasks.txt
-/misc/documents/complete_tasks.txt
+**/misc/documents/
+/misc/documents
+misc/documents/
+/misc/documents/
+misc/documents
+**/misc/backup/
+/misc/backup
 misc/backup/
 /misc/backup/
 misc/backup
@@ -29,7 +30,7 @@ misc/backup
 # Logs.
 /logs
 
-# Testing
+# Testing.
 /coverage
 test
 coverage
