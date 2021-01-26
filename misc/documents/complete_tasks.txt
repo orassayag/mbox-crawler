@@ -1,5 +1,12 @@
 Complete + canceled tasks:
 ==========================
+-Fix uneeded formats with: "formatFiles.excludePattern": "**/node_modules,**/.vscode,**/dist/**,**/.chrome,**/misc". *
+-Take the initiate service from 'crawler' project. *
+-Add .catch(e => console.log(e)); to all (async () => { - Take the logic from 'crawler' project. *
+-Format all files. *
+-Verify all works. *
+-Upload to GitHub. *
+-Move all completed tasks to complete_tasks.txt. *
 -Add 'Complete + canceled tasks: *
 ==========================' to complete_tasks.txt. *
 -Take updated 'Misc' section from 'crawler' project for npmignore and gitignore files. *

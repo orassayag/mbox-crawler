@@ -22,5 +22,6 @@
     },
     "eslint.validate": [
         "javascript"
-    ]
+    ],
+    "formatFiles.excludePattern": "**/node_modules,**/.vscode,**/dist/**,**/.chrome,**/misc,**/sources"
 }

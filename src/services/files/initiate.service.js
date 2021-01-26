@@ -10,11 +10,11 @@ class InitiateService {
 	}
 
 	initiate(scriptType) {
+		// First, setup handle errors and promises.
+		this.setup();
 		// Validate the script type.
 		this.scriptType = scriptType;
 		this.validateScriptType();
-		// First, setup handle errors and promises.
-		this.setup();
 		// The second important thing to to it to validate all the parameters of the settings.js file.
 		this.validateSettings();
 		// The next thing is to calculate paths and inject back to the settings.js file.
@@ -23,15 +23,6 @@ class InitiateService {
 		this.validateDirectories();
 		// Validate that certain directories exists, and if not, create them.
 		this.createDirectories();
-	}
-
-	validateScriptType() {
-		if (!validationUtils.isValidEnum({
-			enum: ScriptType,
-			value: this.scriptType
-		})) {
-			throw new Error('Invalid or no ScriptType parameter was found (1000036)');
-		}
 	}
 
 	setup() {
@@ -55,6 +46,15 @@ class InitiateService {
 			process.stdout.write('\n\r');
 			process.exit(0);
 		});
+	}
+
+	validateScriptType() {
+		if (!validationUtils.isValidEnum({
+			enum: ScriptType,
+			value: this.scriptType
+		})) {
+			throw new Error('Invalid or no ScriptType parameter was found (1000036)');
+		}
 	}
 
 	validateSettings() {
