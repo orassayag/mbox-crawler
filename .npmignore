@@ -16,11 +16,6 @@ build/
 build
 
 # Misc.
-**/misc/documents/
-/misc/documents
-misc/documents/
-/misc/documents/
-misc/documents
 **/misc/backup/
 /misc/backup
 misc/backup/
