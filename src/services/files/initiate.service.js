@@ -161,7 +161,7 @@ class InitiateService {
 
 	createDirectories() {
 		[
-			// ===DYNAMIC PATH===
+			// ===DYNAMIC PATH=== //
 			'DIST_PATH', 'NODE_MODULES_PATH'
 		].map(key => {
 			const value = settings[key];

@@ -1,3 +1,19 @@
+Complete + canceled tasks:
+==========================
+-Add 'Complete + canceled tasks: *
+==========================' to complete_tasks.txt. *
+-Take updated 'Misc' section from 'crawler' project for npmignore and gitignore files. *
+-In .eslintrc file - set "no-unused-vars": 1. *
+-Update the .eslintignore file from 'crawler' project. *
+-Add REMEMBER message to here. *
+-Replace all 'let' to 'const' and where no bugs - change it. *
+-Check for empty lines inside functions / models with regular expression: ^\s*$ *
+-Remove comments. *
+-Remove all comments. *
+-Format all files. *
+-Verfiy script works. *
+-Update GitHub. *
+-Remove all complete tasks to complete_tasks.txt file. *
 -Remove all comments. *
 -Remove all unused files, functions, and variables. *
 -Remove setup service - not relevant anymore. *

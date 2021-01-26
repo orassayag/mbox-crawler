@@ -50,7 +50,7 @@ class SummaryService {
 
     async createSummaryFile(data) {
         const { fileSummaryData, summaryFilePath } = data;
-        let fileData = logUtils.logSummaryFile(fileSummaryData);
+        const fileData = logUtils.logSummaryFile(fileSummaryData);
         await fileUtils.appendFile({
             targetPath: summaryFilePath,
             message: fileData
