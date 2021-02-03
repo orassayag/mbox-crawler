@@ -36,15 +36,6 @@ class GlobalUtils {
             throw new Error(`targetPath not writable: ${targetPath} (1000066)`);
         }
     }
-
-    createDirectory(targetPath) {
-        if (!targetPath) {
-            return;
-        }
-        if (!fs.existsSync(targetPath)) {
-            fs.mkdirSync(targetPath, { recursive: true });
-        }
-    }
 }
 
 module.exports = new GlobalUtils();
