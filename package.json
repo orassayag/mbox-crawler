@@ -2,8 +2,10 @@
   "name": "mbox-crawler",
   "version": "1.0.0",
   "private": true,
-  "description": "",
+  "description": "A Node.js application to scan the gmail MBOX files (that contains all the inbox/sent email messages). The process will contain verification of the email messages count, and all email addresses count, validate each email address, and in the end, export all email addresses to a TXT file. Doing all of this, without any traditional database involved. Also, to build a script that merge couple of merged TXT files, and pull out their diff.",
   "keywords": [
+    "txt",
+    "TXT",
     "data",
     "text",
     "MBOX",
@@ -26,7 +28,11 @@
   ],
   "files": [
     "src",
+    ".eslintignore",
     ".eslintrc",
+    ".gitignore",
+    ".jsbeautifyrc",
+    ".npmignore",
     "package-lock.json",
     "package.json",
     "README.md"
@@ -34,7 +40,8 @@
   "main": "src/scripts/crawl.script.js",
   "scripts": {
     "backup": "node src/scripts/backup.script.js",
-    "start": "node src/scripts/crawl.script.js"
+    "start": "node src/scripts/crawl.script.js",
+    "stop": "taskkill -f -im node.exe"
   },
   "browserslist": [
     ">0.2%",
@@ -45,7 +52,7 @@
   "dependencies": {
     "babel-eslint": "^10.1.0",
     "check-disk-space": "^2.1.0",
-    "eslint": "^7.19.0",
+    "eslint": "^7.20.0",
     "fs-extra": "^9.1.0",
     "line-by-line": "^0.1.6",
     "node-mbox": "^1.0.0",

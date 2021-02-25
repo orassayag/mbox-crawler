@@ -49,7 +49,7 @@ class InitiateService {
 	}
 
 	validateScriptType() {
-		if (!validationUtils.isValidEnum({
+		if (!this.scriptType || !validationUtils.isValidEnum({
 			enum: ScriptType,
 			value: this.scriptType
 		})) {
@@ -71,6 +71,7 @@ class InitiateService {
 		const { OUTER_APPLICATION_PATH, INNER_APPLICATION_PATH, APPLICATION_PATH,
 			BACKUPS_PATH, DIST_PATH, SOURCES_PATH, NODE_MODULES_PATH, PACKAGE_JSON_PATH,
 			PACKAGE_LOCK_JSON_PATH } = settings;
+		// ===DYNAMIC PATH=== //
 		settings.APPLICATION_PATH = pathUtils.getJoinPath({ targetPath: OUTER_APPLICATION_PATH, targetName: APPLICATION_PATH });
 		if (this.scriptType === ScriptType.BACKUP) {
 			settings.BACKUPS_PATH = pathUtils.getJoinPath({ targetPath: OUTER_APPLICATION_PATH, targetName: BACKUPS_PATH });

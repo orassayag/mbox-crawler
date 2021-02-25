@@ -1,10 +1,32 @@
 Complete + canceled tasks:
 ==========================
+-Update packages. *
+-Check the order of the parameters in the initiate.service.js (Titles order identical to settings.js order). *
+-Add script name to tests and add validation for empty script name in initiate.service.js (copy from sender project). *
+-Go over timeUtils and make sure all local "this.getDay" are being used, and not "date.getDate()" for example. *
+-Add index.js to "configurations" direcotry and replace in all places. *
+-Fix comment:         // Get the backup title from the console.s *
+-Fix all README.me + package.json from 'create-react-up' to 'create-react-app'.
+-Change all ect => etc - In all projects. *
+-Verify package.json project name. *
+-Change all README.md files to the title of the project as first line (Only one #). *
+-Change from 'Start to be built' to 'Built in', and remove space lines, and the "-Goal:", *
+and remove the 'This project was bootstrapped with [Create React App] *
+(https://github.com/facebook/create-react-app).' line under to the description with *
+line space,  all fixes in README.md. *
+-Re-format all error numbers + last_index.txt file. *
+-Clear all comments. *
+-Fix all misspells in all TXT files. *
+-Format all documents. *
+-Move all complete tasks to complete_tasks.txt. *
+-Verify all works good. *
+-Upload to GitHub. *
+-Backup iOmega. *
 -Update packages + re-create package.json file. *
 -Fix the 'replaceCharacter' function (if exists), according to the logic in 'udemy-courses' project, and replace *
 it in all places (where don't need flag, pass '': regexUtils.createRegex(origin, ''). *
 -Check for duplicate 'createDirectory' - remove it from global, and use the one from fileUtils. Take it from 'udemy-courses' project. *
--Fix uneeded formats with: "formatFiles.excludePattern": "**/node_modules,**/.vscode,**/dist/**,**/.chrome,**/misc". *
+-Fix uneeded formats with: "formatFiles.excludePattern": "**'/node_modules,**'/.vscode,**'/dist/'**,**'/.chrome,**'/misc". *
 -Take the initiate service from 'crawler' project. *
 -Add .catch(e => console.log(e)); to all (async () => { - Take the logic from 'crawler' project. *
 -Format all files. *
@@ -22,7 +44,7 @@ it in all places (where don't need flag, pass '': regexUtils.createRegex(origin,
 -Remove comments. *
 -Remove all comments. *
 -Format all files. *
--Verfiy script works. *
+-Verify script works. *
 -Update GitHub. *
 -Remove all complete tasks to complete_tasks.txt file. *
 -Remove all comments. *
