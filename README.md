@@ -9,8 +9,8 @@ Steps to view the solution:
 1. Open server application on IDE (I use VSCode).
 2. Terminal: npm i
 
-###Crawl MBOX Files Script:
-===========================
+### Crawl MBOX Files Script:
+
 In terminal: npm run crawl
 -Instructions & How to use:
 1. Place a valid MBOX file in the /sources/ directory.
