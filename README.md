@@ -1,6 +1,6 @@
 # MBOX Crawler
 
-Built in January 2019. A Node.js application to scan the gmail MBOX files (that contains all the inbox/sent email messages). The process will contain verification of the email messages count, and all email addresses count, validate each email address, and in the end, export all email addresses to a TXT file. Doing all of this, without any traditional database involved. Also, to build a script that merge couple of merged TXT files, and pull out their diff.
+Built in January 2019. A Node.js application to scan the Gmail MBOX files (that contains all the inbox/sent email messages). The process will contain verification of the email messages count, and all email addresses count, validate each email address, and in the end, export all email addresses to a TXT file. Doing all of this, without any traditional database involved. Also, to build a script that merge couple of merged TXT files, and pull out their diff.
 
 ## Getting Started
 
