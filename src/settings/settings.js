@@ -12,23 +12,23 @@ const settings = {
     MINIMUM_FILE_SIZE_BYTES_PER_MBOX_FILE: 1024,
     // Determine the maximum size of MBOX file to scan in bytes.
     MAXIMUM_FILE_SIZE_BYTES_PER_MBOX_FILE: 10737418240,
-    // Determine the maximum number of email addresses per TXT file to in the crawl service.
+    // Determine the maximum number of email addresses per TXT file in the crawl service.
     EMAIL_ADDRESSES_CRAWL_LIMIT_COUNT: 100,
-    // Determine the maximum number of email addresses per TXT file to in the merge service.
+    // Determine the maximum number of email addresses per TXT file in the merge service.
     EMAIL_ADDRESSES_MERGE_LIMIT_COUNT: 100,
     // Determine the maximum number of merge rounds in the merge service.
     MAXIMUM_MERGE_ROUNDS_COUNT: 10,
     // Determine the number of seconds to delay between the validations in the validate service.
     SECONDS_DELAY_BETWEEN_VALIDATIONS: 1,
-    // Determine the maximum charecters count of email addresses.
+    // Determine the maximum characters count of email addresses.
     MAXIMUM_EMAIL_CHARACTERS_LENGTH: 50,
-    // Determine the rate ot the merge in the merge service.
+    // Determine the rate of the merge in the merge service.
     ADVANCE_MERGE_MULTIPLY: 2,
 
     // ===FILE NAME=== //
     // Determine the temporary name of the TXT file in the crawl service.
     DIST_TEMPORARY_FILE_NAME: 'temporary_crawl',
-    // Determine the final name of the TXT file of all the email addresses in a list view (separated each lines).
+    // Determine the final name of the TXT file of all the email addresses in a list view (separated each line).
     DIST_FINAL_LIST_VIEW_FILE_NAME: 'final_list_view',
     // Determine the final name of the TXT file of all the email addresses in a merge view (separated commas).
     DIST_FINAL_MERGE_VIEW_FILE_NAME: 'final_merge_view',
@@ -56,7 +56,7 @@ const settings = {
     }),
 
     // ===DYNAMIC PATH=== //
-    // All the these paths will be calculated during runtime in the initiate service.
+    // All these paths will be calculated during runtime in the initiate service.
     // DON'T REMOVE THE KEYS, THEY WILL BE CALCULATED TO PATHS DURING RUNTIME.
     // Determine the application path where all the source of the application is located.
     // (Working example: 'C:\\Or\\Web\\mbox-crawler\\mbox-crawler').
@@ -64,7 +64,7 @@ const settings = {
     // Determine the backups directory which all the local backup will be created to.
     // (Working example: 'C:\\Or\\Web\\Crawler\\backups').
     BACKUPS_PATH: 'backups',
-    // Determine the dist directory path which there, all the outcome of the crawling will be created.
+    // Determine the dist directory path which there, all the outcome of the logs will be created.
     // (Working example: 'C:\\Or\\Web\\mbox-crawler\\mbox-crawler\\dist').
     DIST_PATH: 'dist',
     // Determine the sources directory path.
@@ -78,19 +78,19 @@ const settings = {
     PACKAGE_LOCK_JSON_PATH: 'package-lock.json',
 
     // ===BACKUP=== //
-    // Determine the directories to ignore when an backup copy is taking place.
+    // Determine the directories to ignore when a backup copy is taking place.
     // For example: 'dist'.
-    IGNORE_DIRECTORIES: ['dist', 'node_modules'],
+    IGNORE_DIRECTORIES: ['dist', 'node_modules', 'sources'],
     // Determine the files to ignore when the back copy is taking place.
     // For example: 'back_sources_tasks.txt'.
-    IGNORE_FILES: ['back_sources_tasks.txt', 'todo_tasks.txt'],
+    IGNORE_FILES: ['back_sources_tasks.txt'],
     // Determine the files to force include when the back copy is taking place.
     // For example: '.gitignore'.
     INCLUDE_FILES: ['.gitignore'],
     // Determine the period of time in milliseconds to
     // check that files were created / moved to the target path.
     MILLISECONDS_DELAY_VERIFY_BACKUP_COUNT: 1000,
-    // Determine the number of time in loop to check for version of a backup.
+    // Determine the number of times in loop to check for version of a backup.
     // For example, if a backup name "test-test-test-1" exists, it will check for "test-test-test-2",
     // and so on, until the current maximum number.
     BACKUP_MAXIMUM_DIRECTORY_VERSIONS_COUNT: 50

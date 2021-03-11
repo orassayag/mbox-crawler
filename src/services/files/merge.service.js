@@ -40,14 +40,14 @@ class MergeService {
             index: this.finalTXTFilesCount
         });
         const emailAddressesList = await emailUtils.getEmailAddressesFromFile(lastFilePath);
-        // Rename the last merged TXT file to it target name.
+        // Rename the last merged TXT file to its target name.
         await fileUtils.renameFile({
             basePath: lastFilePath,
             targetPath: this.file.distFinalMergeViewTXTFile.filePath
         });
         await this.file.distFinalMergeViewTXTFile.calculateFileSize();
         this.file.distFinalMergeViewTXTFile.fileEmailAddressesCount = emailAddressesList.length;
-        // Create a file with all email addresses with break line.
+        // Create a file with all email addresses with a break line.
         await fileUtils.appendFile({
             targetPath: this.file.distFinalListViewTXTFile.filePath,
             message: textUtils.breakLine(textUtils.sortAlphabetical(emailAddressesList))

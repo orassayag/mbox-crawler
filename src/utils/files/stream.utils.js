@@ -10,7 +10,7 @@ class StreamUtils {
     async createStream(data) {
         const { packageType, targetPath } = data;
         let stream = null;
-        // Check if file path exists.
+        // Check if the file path exists.
         await fileUtils.isPathExists(targetPath);
         switch (packageType) {
             case PackageType.LINE_BY_LINE: {

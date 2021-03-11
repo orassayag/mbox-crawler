@@ -1,5 +1,47 @@
 Complete + canceled tasks:
 ==========================
+-In all the maintainance projects: *
+-Update packages + re-create package.json files. *
+01. Update the 'REMEMBER' section of this document. *
+02. ' all the outcome of the crawling will be created' comment should be updated. *
+03. Add to package.json file the 'INSTRUCTIONS.md' key in the files section (if it exists in the project). *
+04. In the initate.service - const { Mode, ScriptType } = require('../../core/enums/files/system.enum'); - Need to change to ../../core/enums. *
+05. Check if async copyDirectory( is not with line break. *
+06. Fix createDirectory - No need for await in createSessionDirectory method. *
+07. "Validate internet connection works." => "Validate that the internet connection works." *
+08. "sending emails processes." in udemy-courses project. *
+09. Rename the function 'getFileData' to 'getJsonFileData'. *
+10. Copy the logic of 'this.updateStatus' to all change statuses in the main script file. *
+11. On udemy-courses project, change the "validate" and "compare" functions to "validateFields" and "compareCourses". *
+12. On udemy-courses project, change 'isExpectedFilled' to 'isFilledExpected'. *
+13. Change all functions names that return true/false to 'isValidXXX' in validationUtils. *
+14. -In all places change to use isExists instead of .length > 0 or .length <= 0. *
+15. Copy the logic of retry on check internet connection in all relevant projects (like in the udemy courses project). *
+16. Add to 'INSTRUCTIONS.md' how the console log should be (take the specific sentance from other project). *
+18. Place this in all 'ToDo' documents of all the projects. *
+16. Add 'INSTRUCTIONS.md' file if not exists (add it to files in package.json). *
+17. Add to 'INSTRUCTIONS.md' how the console log should be (take the specific sentance from other project) + *
+ /* cSpell:disable */ before the console log status example. *
+19. Copy the 'updateCount' function (if exists) from 'sender' project. *
+20. Update settings.json: *
+"formatFiles.excludePattern": "**/node_modules,**/.vscode,**/dist,**/dist/**,**/.chrome,**/misc,**/misc/**,**/sources,**/sources/**" *
+21. Add to .eslintignore, .gitignore, .npmignore files + settings.js: *
+# Sources. *
+sources/ *
+/sources *
+sources *
+-Bring back production to true in settings.js. *
+-Remove all comments. *
+-Re-format error numbers + last_index.txt file. *
+-Fix all spell mistakes via Gmail.
+-Format all files.
+-Upload to GitHub. *
+-Backup iOmega. *
+-Clear complete tasks. *
+17. Accounts re-organization: *
+a. Place the 'Accounts' directory inside 'C:\Users\Or\Dropbox'. *
+b. Reffer all the projects to this location. *
+c. Make sure that after each path change the project still works. *
 -Update packages. *
 -Check the order of the parameters in the initiate.service.js (Titles order identical to settings.js order). *
 -Add script name to tests and add validation for empty script name in initiate.service.js (copy from sender project). *

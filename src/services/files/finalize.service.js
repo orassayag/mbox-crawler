@@ -18,7 +18,7 @@ class FinalizeService {
         return this.file;
     }
 
-    // Validate that paths of all the main files exists.
+    // Validate that paths of all the main files exist.
     async validatePaths() {
         logUtils.logStatus('Validating main paths.');
         const paths = [

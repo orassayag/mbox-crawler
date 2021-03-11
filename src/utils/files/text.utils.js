@@ -8,7 +8,7 @@ class TextUtils {
         this.sizesList = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
     }
 
-    // This method fetch for all email addresses within given text data.
+    // This method fetches all email addresses within given text data.
     getEmailAddresses(data) {
         if (!validationUtils.isExists(data)) {
             return [];
@@ -16,7 +16,7 @@ class TextUtils {
         return data.toString().match(regexUtils.emailAddressesRegex);
     }
 
-    // This method convert a given number to display comma number.
+    // This method converts a given number to display comma number.
     getNumberWithCommas(number) {
         if (!validationUtils.isValidNumber(number)) {
             return '';
@@ -24,7 +24,7 @@ class TextUtils {
         return number.toString().replace(regexUtils.numberCommasRegex, ',');
     }
 
-    // This method convert bytes number to megabyte display number.
+    // This method converts a bytes number to a megabyte display number.
     getFileSizeDisplay(bytes) {
         if (!validationUtils.isValidNumber(bytes)) {
             return null;
@@ -54,7 +54,7 @@ class TextUtils {
         return value.substring(0, value.length - charactersCount);
     }
 
-    // This method add leading 0 if needed.
+    // This method adds leading 0 if needed.
     addLeadingZero(number) {
         if (!validationUtils.isValidNumber(number)) {
             return '';

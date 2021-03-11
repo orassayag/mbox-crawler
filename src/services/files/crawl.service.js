@@ -187,7 +187,7 @@ class CrawlService {
         }
         logUtils.logStatus('Verifying email addresses count.');
         const scanRound1 = this.file.scanData.scanRounds[0];
-        // Verify that the number of email addresses from the scan step equals to the total email addresses pulled out.
+        // Verify that the number of email addresses from the scan step equals the total email addresses pulled out.
         const totalEmailAddressesCounter = await this.verifyEmailAddressesCount(createTXTFilesCounter);
         if (totalEmailAddressesCounter !== scanRound1.scanRoundEmailAddressesCount || emailAddressesCounter !== scanRound1.scanRoundEmailAddressesCount ||
             emailAddressesCounter !== totalEmailAddressesCounter || linesCounter !== scanRound1.scanRoundLinesCount) {

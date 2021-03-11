@@ -24,7 +24,7 @@ class FileUtils {
         }
     }
 
-    // This method remove all files from a given target path.
+    // This method removes all files from a given target path.
     async emptyDirectory(targetPath) {
         // Verify that the path exists.
         globalUtils.isPathExistsError(targetPath);
@@ -32,7 +32,7 @@ class FileUtils {
         await fs.emptyDir(targetPath);
     }
 
-    // This method return all the files in a given target path.
+    // This method returns all the files in a given target path.
     async getDirectoryFiles(targetPath) {
         // Verify that the path exists.
         globalUtils.isPathExistsError(targetPath);

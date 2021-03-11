@@ -5,8 +5,7 @@
         "gmail",
         "jsbeautifyrc",
         "mbox",
-        "orassayag",
-        "uneeded"
+        "orassayag"
     ],
     "search.exclude": {
         "**/.vscode": true,
@@ -24,5 +23,5 @@
     "eslint.validate": [
         "javascript"
     ],
-    "formatFiles.excludePattern": "**/node_modules,**/.vscode,**/dist/**,**/.chrome,**/misc,**/sources"
+    "formatFiles.excludePattern": "**/node_modules,**/.vscode,**/dist,**/dist/**,**/.chrome,**/misc,**/misc/**,**/sources,**/sources/**"
 }

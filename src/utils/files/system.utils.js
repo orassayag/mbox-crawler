@@ -17,7 +17,7 @@ class SystemUtils {
             });
         });
         if ((diskSizes.free + (fileSize % 0.01)) > diskSizes.size) {
-            throw new Error('Not enough space to preform the process (1000077)');
+            throw new Error('Not enough space to perform the process (1000077)');
         }
     }
 }

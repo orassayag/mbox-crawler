@@ -32,12 +32,12 @@ class CrawlLogic {
     // This method will run all the methods of the crawl process.
     async run() {
         // ===SETUP STEP=== //
-        // This is the first step of the crawl process. It contains logic that validate all the settings in the
+        // This is the first step of the crawl process. It contains logic that validates all the settings in the
         // settings/settings.js file. Also, in this step, there is a validation process of the
         // external API in the validation step.
         await this.setup();
         // ===INITIATE PROCESS STEP=== //
-        // This step main goal is to prepare the actual crawl process. It validates the dist and the sources paths,
+        // This step's main goal is to prepare the actual crawl process. It validates the dist and the sources paths,
         // and pull out all the MBOX files to crawl email addresses from, and make a list of all the files and sizes,
         // and to log it in a table to the console.
         await this.initiate();
@@ -57,7 +57,7 @@ class CrawlLogic {
         // to scan the number of email messages, number of lines, and the number of email addresses in the MBOX file.
         await this.scan();
         // ===CONFIRM STEP=== //
-        // This step main goal is to validate the file details and properties with the process settings, and to verify
+        // This step's main goal is to validate the file details and properties with the process settings, and to verify
         // they fit.
         await this.confirm();
         // ===CRAWL STEP=== //
@@ -66,18 +66,18 @@ class CrawlLogic {
         // addresses that pulled out from the MBOX file.
         await this.crawl();
         // ===MERGE STEP=== //
-        // The next step, is to merge all the TXT files. This is the step that take care of it. It contains the logic
+        // The next step, is to merge all the TXT files. This is the step that takes care of it. It contains the logic
         // to filter duplicate email addresses fetched from all the TXT files, and recursively merge all the unique
         // email addresses, in the end of the process, to a single TXT file.
         await this.merge();
         // ===VALIDATION STEP=== //
-        // After fetching all the email addresses to single TXT file, it's time to validate which one are valid and invalid.
-        // This step contains the logic of validation that do just that. In the end of this step, couple of TXT files will be created,
+        // After fetching all the email addresses to a single TXT file, it's time to validate which one are valid and invalid.
+        // This step contains the logic of validation that does just that. In the end of this step, a couple of TXT files will be created,
         // such as: list of all the email addresses, list of the valid email addresses, and list of all the invalid email addresses.
-        // The validation process preformed by external API in post request and with response if a given email address is valid or not.
+        // The validation process performed by external API in post request and with response if a given email address is valid or not.
         await this.validation();
         // ===FINALIZE STEP=== //
-        // In the finalize step, there is logic to finish the crawl process: verify that all the main TXT files exists,
+        // In the finalize step, there is logic to finish the crawl process: verify that all the main TXT files exist,
         // delete unnecessary files, validate the process data through all the steps, and calculate the data for the summary log table.
         await this.finalize();
         // ===SUMMARY STEP=== //
