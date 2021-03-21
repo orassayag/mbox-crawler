@@ -2,7 +2,7 @@ class ValidationUtils {
 
     constructor() { }
 
-    // This method checks if a given value is a valid number and returns the result.
+    // This method validates if a given value is a valid number and returns the result.
     isValidNumber(number) {
         number = Number(number);
         return !isNaN(number) && typeof number == 'number';

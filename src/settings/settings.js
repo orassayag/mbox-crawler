@@ -56,7 +56,7 @@ const settings = {
     }),
 
     // ===DYNAMIC PATH=== //
-    // All these paths will be calculated during runtime in the initiate service.
+    // All these paths will be calculated during runtime in the initial service.
     // DON'T REMOVE THE KEYS, THEY WILL BE CALCULATED TO PATHS DURING RUNTIME.
     // Determine the application path where all the source of the application is located.
     // (Working example: 'C:\\Or\\Web\\mbox-crawler\\mbox-crawler').
@@ -91,7 +91,7 @@ const settings = {
     // check that files were created / moved to the target path.
     MILLISECONDS_DELAY_VERIFY_BACKUP_COUNT: 1000,
     // Determine the number of times in loop to check for version of a backup.
-    // For example, if a backup name "test-test-test-1" exists, it will check for "test-test-test-2",
+    // For example, if a backup name 'test-test-test-1' exists, it will check for 'test-test-test-2',
     // and so on, until the current maximum number.
     BACKUP_MAXIMUM_DIRECTORY_VERSIONS_COUNT: 50
 };

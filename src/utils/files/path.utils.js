@@ -28,7 +28,7 @@ class PathUtils {
         return extension.toLowerCase() === `.${fileExtension.toLowerCase()}`;
     }
 
-    // This method return the file name without the extension.
+    // This method returns the file name without the extension.
     getFileCleanName(fileName) {
         // Check if the fileName parameter was received.
         if (!fileName) {
