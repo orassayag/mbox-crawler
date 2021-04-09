@@ -40,7 +40,7 @@ class ScanService {
                 scanLinesCounter: (line) => { return ++line; },
                 scanEmailMessagesCounter: () => { return 1; }, // Fake number.
                 getPercentage: (linesCounter) => {
-                    return textUtils.calculateParentageDisplay({
+                    return textUtils.calculatePercentageDisplay({
                         partialValue: linesCounter,
                         totalValue: this.file.scanData.initiateScanLinesCount
                     });
@@ -77,7 +77,7 @@ class ScanService {
                     return ++emailMessagesCounter;
                 },
                 getPercentage: (emailAddressesCounter) => {
-                    return textUtils.calculateParentageDisplay({
+                    return textUtils.calculatePercentageDisplay({
                         partialValue: emailAddressesCounter,
                         totalValue: this.file.scanData.scanRounds[0].scanRoundEmailAddressesCount
                     });

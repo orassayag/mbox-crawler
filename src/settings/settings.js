@@ -1,4 +1,4 @@
-const pathUtils = require('../utils/files/path.utils');
+const { pathUtils } = require('../utils');
 
 const settings = {
     // ===COUNT & LIMIT=== //

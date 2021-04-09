@@ -54,12 +54,12 @@ class FileUtils {
         }
     }
 
-    async createDirectory(targetPath) {
+    createDirectory(targetPath) {
         if (!targetPath) {
             return;
         }
-        if (!await this.isPathExists(targetPath)) {
-            await fs.mkdir(targetPath, { recursive: true });
+        if (!fs.existsSync(targetPath)) {
+            fs.mkdirSync(targetPath, { recursive: true });
         }
     }
 

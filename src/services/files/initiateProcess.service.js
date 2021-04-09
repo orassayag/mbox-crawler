@@ -27,7 +27,7 @@ class InitiateProcessService {
         // Verify that the dist and the sources paths exists.
         await fileUtils.isPathExists(this.sourcesPath);
         // Make sure that the dist directory exists, if not, create it.
-        await fileUtils.createDirectory(this.distPath);
+        fileUtils.createDirectory(this.distPath);
         // Verify that the dist and the sources paths accessible.
         globalUtils.isPathAccessible(this.sourcesPath);
         globalUtils.isPathAccessible(this.distPath);

@@ -1,5 +1,10 @@
 Complete + canceled tasks:
 ==========================
+-Comments: Change 'validateEnumData' to 'data'. *
+-Change all 'Parentage' to 'Percentage' (calculateParentageDisplay => calculatePercentageDisplay). *
+-Remove the 'await' from 'await fileUtils.createDirectory(value);'. *
+-In settings.js convert utils path to index, and check if it still works. *
+-Fix bug with empty lists. *
 -In all the maintenance projects: *
 -Update packages + re-create package.json files. *
 01. Update the 'REMEMBER' section of this document. *

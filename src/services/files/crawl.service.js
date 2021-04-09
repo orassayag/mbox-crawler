@@ -90,7 +90,7 @@ class CrawlService {
                 'Email addresses': totalEmailAddressesCounter,
                 'TXT files': createTXTFilesCounter
             },
-            percentage: textUtils.calculateParentageDisplay({
+            percentage: textUtils.calculatePercentageDisplay({
                 partialValue: linesCounter,
                 totalValue: this.file.scanData.scanRounds[0].scanRoundLinesCount
             })

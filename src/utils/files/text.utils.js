@@ -84,7 +84,7 @@ class TextUtils {
         return list.filter((item, index) => list.indexOf(item) != index).length;
     }
 
-    calculateParentageDisplay(data) {
+    calculatePercentageDisplay(data) {
         const { partialValue, totalValue } = data;
         if (!validationUtils.isValidNumber(partialValue) || !validationUtils.isValidNumber(totalValue)) {
             return '';

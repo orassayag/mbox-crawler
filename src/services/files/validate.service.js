@@ -27,14 +27,14 @@ class ValidateService {
         // Valid email addresses.
         await fileUtils.appendFile({
             targetPath: this.file.distFinalValidTXTFile.filePath,
-            message: textUtils.breakLine(this.validEmailAddressesList)
+            message: validationUtils.isExists(this.validEmailAddressesList) ? textUtils.breakLine(this.validEmailAddressesList) : ' '
         });
         await this.file.distFinalValidTXTFile.calculateFileSize();
         this.file.distFinalValidTXTFile.fileEmailAddressesCount = this.validEmailAddressesList.length;
         // Invalid email addresses.
         await fileUtils.appendFile({
             targetPath: this.file.distFinalInvalidTXTFile.filePath,
-            message: textUtils.breakLine(this.invalidEmailAddressesList)
+            message: validationUtils.isExists(this.invalidEmailAddressesList) ? textUtils.breakLine(this.invalidEmailAddressesList) : ' '
         });
         await this.file.distFinalInvalidTXTFile.calculateFileSize();
         this.file.distFinalInvalidTXTFile.fileEmailAddressesCount = this.invalidEmailAddressesList.length;
@@ -76,7 +76,7 @@ class ValidateService {
                 'Valid email addresses': this.validEmailAddressesList.length,
                 'Invalid email addresses': this.invalidEmailAddressesList.length
             },
-            percentage: textUtils.calculateParentageDisplay({
+            percentage: textUtils.calculatePercentageDisplay({
                 partialValue: index,
                 totalValue: totalEmailAddressesCount
             })
