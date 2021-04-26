@@ -1,5 +1,5 @@
-const regexUtils = require('../files/regex.utils');
-const validationUtils = require('../files/validation.utils');
+const regexUtils = require('./regex.utils');
+const validationUtils = require('./validation.utils');
 
 class TextUtils {
 

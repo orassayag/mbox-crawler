@@ -1,5 +1,5 @@
-const fileUtils = require('../files/file.utils');
-const validationUtils = require('../files/validation.utils');
+const fileUtils = require('./file.utils');
+const validationUtils = require('./validation.utils');
 
 class EmailUtils {
 

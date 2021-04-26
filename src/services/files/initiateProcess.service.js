@@ -1,6 +1,6 @@
-const { FileProcess } = require('../../core/models');
-const { fileUtils, logUtils, pathUtils, textUtils, validationUtils } = require('../../utils');
+const { FileProcessModel } = require('../../core/models');
 const globalUtils = require('../../utils/files/global.utils');
+const { fileUtils, logUtils, pathUtils, textUtils, validationUtils } = require('../../utils');
 
 class InitiateProcessService {
 
@@ -28,7 +28,7 @@ class InitiateProcessService {
         await fileUtils.isPathExists(this.sourcesPath);
         // Make sure that the dist directory exists, if not, create it.
         fileUtils.createDirectory(this.distPath);
-        // Verify that the dist and the sources paths accessible.
+        // Verify that the dist and the sources paths are accessible.
         globalUtils.isPathAccessible(this.sourcesPath);
         globalUtils.isPathAccessible(this.distPath);
         // Empty the dist directory (any previous results exists) before start.
@@ -55,7 +55,7 @@ class InitiateProcessService {
         }
         files = await Promise.all(files.map(f => {
             return new Promise(async resolve => {
-                const temporaryFile = new FileProcess({
+                const temporaryFile = new FileProcessModel({
                     fileName: f,
                     sourcesPath: this.sourcesPath,
                     distPath: this.distPath,

@@ -1,8 +1,8 @@
 const { table } = require('table');
-const { Color } = require('../../core/enums');
-const colorUtils = require('../files/color.utils');
-const textUtils = require('../files/text.utils');
-const validationUtils = require('../files/validation.utils');
+const { ColorEnum } = require('../../core/enums');
+const colorUtils = require('./color.utils');
+const textUtils = require('./text.utils');
+const validationUtils = require('./validation.utils');
 
 class LogUtils {
 
@@ -39,7 +39,7 @@ class LogUtils {
         }
         return this.logColorStatus({
             status: text,
-            color: Color.MAGENTA
+            color: ColorEnum.MAGENTA
         });
     }
 
@@ -57,7 +57,7 @@ class LogUtils {
 
     logError(error) {
         process.stdout.write('\n\r');
-        console.log(error);
+        this.log(error);
     }
 
     logProgress(data) {

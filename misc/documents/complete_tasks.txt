@@ -1,5 +1,50 @@
 Complete + canceled tasks:
 ==========================
+-Update packages + Recreate package-lock.json. *
+-Clear unused enums and make sure all in used really exists. *
+-Remove the 'destination' parameter in the 'filterDirectories' method + Verify that backup still works. *
+-Rename and check: countLimitService.countLimitData.millisecondsSendEmailDelayCount. *
+-Check and reset the '.vscode/settings.json' by 'C:/Or/Web/auto-packages-updater/auto-packages-updater/.vscode/settings.json' + *
+Format all documents and re-add 'cSpell.words' all the words + add the 'cSpell.ignorePaths'. *
+-In validation file path (probably a JSON file) there is a 'Expected a number' comment, need to fix it *
+(take the comment from the auto-packages-updater project). *
+-Convert 'removeLastCharacter' to use 'removeLastCharacters'. *
+-All time logic is in place + Take the 'getCurrentDate' function from the 'event-dates-calendar' project. *
+-Make sure to have space between /* cSpell:disable */ in the 'INSTRUCTIONS.md' file. *
+-Make sure to fix the grammar mistake in the 'enum.utils.js' file (an enum-like object). *
+-In the 'README.md' file, fix in all places to 'In the terminal'. *
+-Replace the 'getCurrentDate' method with the updated one from the 'udemy-courses' project. *
+-Make sure that all places 'this.exit' function - Need to be 'await this.exit'. *
+-Search for 'async ' and create a list of functions/methods, and make sure that all calls have await. *
+-Scan all files for spell mistakes with the 'files-spell-checker' project. *
+-Change all (where it's possible) from 'console.log' to 'logUtils.log'. *
+-In the 'package.json' file change to 'private: false'. *
+-Convert in all places from all versions of canceled keyword to 'Canceled' keyword. *
+-Take the latest settings from '.vscode/settings.json' and implement them. *
+-Change in all places that globalUtils will be on top. *
+-Add in all places 'name.model' to all models. *
+-Check that in all places the name of the file includes the name of tha parent directory. For example: name.model inside 'models' directory. *
+-Don't forget to do the same rename logic for all the enums in the project. *
+-Fix all '/files/' 'requires' to be short. *
+-Change in all places the config from 'misc/backup' to 'misc/backups' directory. *
+-Copy the '.eslintignore' file from the 'udemy-courses' project. *
+-Add to the 'package.json' file (below the 'description' field) the 'repository' field: *
+"repository": { *
+  "type": "git", *
+  "url": "git://github.com/username/repository.git" *
+} *
+-Make sure all switch-case have curly braces. *
+-Remove code comments to a backup TXT file. *
+-Remove the duplicate empty lines: \n\s*\n\s*\n *
+-Remove the first empty line: ^(?<![\s])\n *
+-Remove the last empty line: \n\s*$(?!\n) *
+-Detect all comments without a dot at the end: ^// .*(?<!\.)$ *
+-Format all documents. *
+-Verify all works well. *
+-Fix TXT files spell mistakes via Gmail. *
+-Move all complete tasks from here to complete_tasks.txt. *
+-Upload to GitHub. *
+-Backup to iOmega. *
 -Comments: Change 'validateEnumData' to 'data'. *
 -Change all 'Parentage' to 'Percentage' (calculateParentageDisplay => calculatePercentageDisplay). *
 -Remove the 'await' from 'await fileUtils.createDirectory(value);'. *
@@ -579,7 +624,7 @@ Complete Crawl MBOX Files Script: *
 2. In the crawl step: calculate percentage according to the email addresses count. *
 3. In the validate step: calculate percentage according to the email addresses count. *
 -Move the 'mbox-files-crawler-handler.service.js' to the email.utils file. *
--Declare all the relevant variables: path of the file, number of lines to scan, ect. *
+-Declare all the relevant variables: path of the file, number of lines to scan, etc. *
 -The first step is to count all lines, and count all email addresses, *
  start and end time of process, get the file size and file name *
 -Compare it with the mbox package with the same process. *

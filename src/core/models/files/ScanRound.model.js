@@ -1,4 +1,4 @@
-class ScanRound {
+class ScanRoundModel {
 
     constructor(scanRoundData) {
         const { scanRoundNumber, scanRoundPackageName, scanRoundLinesCount, scanRoundEmailMessagesCount, scanRoundEmailAddressesCount } = scanRoundData;
@@ -10,4 +10,4 @@ class ScanRound {
     }
 }
 
-module.exports = ScanRound;
+module.exports = ScanRoundModel;

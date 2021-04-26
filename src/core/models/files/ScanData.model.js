@@ -1,4 +1,4 @@
-class ScanData {
+class ScanDataModel {
 
     constructor() {
         this.initiateScanLinesCount = 0;
@@ -6,4 +6,4 @@ class ScanData {
     }
 }
 
-module.exports = ScanData;
+module.exports = ScanDataModel;

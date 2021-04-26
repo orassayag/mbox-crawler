@@ -1,9 +1,9 @@
 const { timeUtils } = require('../../../utils');
 
-class TimesData {
+class TimesDataModel {
 
     constructor() {
-        this.startProcessDateTime = new Date();
+        this.startProcessDateTime = timeUtils.getCurrentDate();
         this.endProcessDateTime = null;
         this.totalProcessTime = null;
         this.startProcessDateTimeDisplay = null;
@@ -22,4 +22,4 @@ class TimesData {
     }
 }
 
-module.exports = TimesData;
+module.exports = TimesDataModel;

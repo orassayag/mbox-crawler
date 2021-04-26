@@ -1,13 +1,13 @@
 const enumUtils = require('../enum.utils');
 
-const PackageType = enumUtils.createEnum([
+const PackageTypeEnum = enumUtils.createEnum([
     ['LINE_BY_LINE', 'line-by-line'],
     ['NODE_MBOX', 'node-mbox']
 ]);
 
-const ScriptType = enumUtils.createEnum([
+const ScriptTypeEnum = enumUtils.createEnum([
     ['BACKUP', 'backup'],
     ['CRAWL', 'crawl']
 ]);
 
-module.exports = { PackageType, ScriptType };
+module.exports = { PackageTypeEnum, ScriptTypeEnum };

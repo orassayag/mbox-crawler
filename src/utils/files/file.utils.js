@@ -1,6 +1,6 @@
 const fs = require('fs-extra');
+const globalUtils = require('./global.utils');
 const pathUtils = require('./path.utils');
-const globalUtils = require('../../utils/files/global.utils');
 
 class FileUtils {
 

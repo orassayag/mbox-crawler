@@ -1,5 +1,5 @@
 const path = require('path');
-const textUtils = require('../files/text.utils');
+const textUtils = require('./text.utils');
 
 class PathUtils {
 

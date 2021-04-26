@@ -1,4 +1,4 @@
-const { PackageType } = require('../../core/enums');
+const { PackageTypeEnum } = require('../../core/enums');
 const { emailUtils, fileUtils, logUtils, textUtils, streamUtils, validationUtils } = require('../../utils');
 
 class CrawlService {
@@ -92,7 +92,7 @@ class CrawlService {
             },
             percentage: textUtils.calculatePercentageDisplay({
                 partialValue: linesCounter,
-                totalValue: this.file.scanData.scanRounds[0].scanRoundLinesCount
+                totalValue: this.file.scanDataModel.scanRounds[0].scanRoundLinesCount
             })
         });
         return {
@@ -123,9 +123,9 @@ class CrawlService {
     }
 
     async crawlFile() {
-        logUtils.logStatus(`Crawling with the "${PackageType.LINE_BY_LINE}" NPM package.`);
+        logUtils.logStatus(`Crawling with the "${PackageTypeEnum.LINE_BY_LINE}" NPM package.`);
         const stream = await streamUtils.createStream({
-            packageType: PackageType.LINE_BY_LINE,
+            packageType: PackageTypeEnum.LINE_BY_LINE,
             targetPath: this.file.sourceMBOXFile.filePath
         });
         return new Promise((resolve, reject) => {
@@ -186,12 +186,12 @@ class CrawlService {
             throw new Error(`Invalid or no createTXTFilesCounter was found: ${createTXTFilesCounter} (1000010)`);
         }
         logUtils.logStatus('Verifying email addresses count.');
-        const scanRound1 = this.file.scanData.scanRounds[0];
+        const scanRound1 = this.file.scanDataModel.scanRounds[0];
         // Verify that the number of email addresses from the scan step equals the total email addresses pulled out.
         const totalEmailAddressesCounter = await this.verifyEmailAddressesCount(createTXTFilesCounter);
         if (totalEmailAddressesCounter !== scanRound1.scanRoundEmailAddressesCount || emailAddressesCounter !== scanRound1.scanRoundEmailAddressesCount ||
             emailAddressesCounter !== totalEmailAddressesCounter || linesCounter !== scanRound1.scanRoundLinesCount) {
-            const title = 'Unmatch scan results (1000011)';
+            const title = 'Mismatch scan results (1000011)';
             logUtils.logStatus(`${title}:`, { totalEmailAddressesCounter, crawlResults, ...scanRound1 });
             throw new Error(title);
         }

@@ -1,4 +1,4 @@
-const { PackageType } = require('../../core/enums');
+const { PackageTypeEnum } = require('../../core/enums');
 const { logUtils, textUtils, streamUtils, validationUtils } = require('../../utils');
 
 class ScanService {
@@ -26,14 +26,14 @@ class ScanService {
     async scanFirstPackage() {
         this.logScan({
             scanNumber: 1,
-            scanPackageName: PackageType.LINE_BY_LINE
+            scanPackageName: PackageTypeEnum.LINE_BY_LINE
         });
         let scanResults = null;
         try {
             scanResults = await this.scanMBOXFile({
                 scanNumber: 1,
                 stream: await streamUtils.createStream({
-                    packageType: PackageType.LINE_BY_LINE,
+                    packageType: PackageTypeEnum.LINE_BY_LINE,
                     targetPath: this.file.sourceMBOXFile.filePath
                 }),
                 eventName: 'line',
@@ -42,7 +42,7 @@ class ScanService {
                 getPercentage: (linesCounter) => {
                     return textUtils.calculatePercentageDisplay({
                         partialValue: linesCounter,
-                        totalValue: this.file.scanData.initiateScanLinesCount
+                        totalValue: this.file.scanDataModel.initiateScanLinesCount
                     });
                 }
             });
@@ -52,7 +52,7 @@ class ScanService {
         }
         this.setScanResults({
             scanNumber: 1,
-            scanPackageName: PackageType.LINE_BY_LINE,
+            scanPackageName: PackageTypeEnum.LINE_BY_LINE,
             scanResults: scanResults
         });
     }
@@ -60,14 +60,14 @@ class ScanService {
     async scanSecondPackage() {
         this.logScan({
             scanNumber: 2,
-            scanPackageName: PackageType.NODE_MBOX
+            scanPackageName: PackageTypeEnum.NODE_MBOX
         });
         let scanResults = null;
         try {
             scanResults = await this.scanMBOXFile({
                 scanNumber: 2,
                 stream: await streamUtils.createStream({
-                    packageType: PackageType.NODE_MBOX,
+                    packageType: PackageTypeEnum.NODE_MBOX,
                     targetPath: this.file.sourceMBOXFile.filePath
                 }),
                 eventName: 'message',
@@ -79,7 +79,7 @@ class ScanService {
                 getPercentage: (emailAddressesCounter) => {
                     return textUtils.calculatePercentageDisplay({
                         partialValue: emailAddressesCounter,
-                        totalValue: this.file.scanData.scanRounds[0].scanRoundEmailAddressesCount
+                        totalValue: this.file.scanDataModel.scanRounds[0].scanRoundEmailAddressesCount
                     });
                 }
             });
@@ -89,7 +89,7 @@ class ScanService {
         }
         this.setScanResults({
             scanNumber: 2,
-            scanPackageName: PackageType.NODE_MBOX,
+            scanPackageName: PackageTypeEnum.NODE_MBOX,
             scanResults: scanResults
         });
     }
@@ -200,8 +200,8 @@ class ScanService {
     }
 
     validatePreScan() {
-        if (!validationUtils.isPositiveNumber(this.file.scanData.initiateScanLinesCount)) {
-            throw new Error(`Invalid or no initiateScanLinesCount was found: ${this.file.scanData.initiateScanLinesCount} (1000048)`);
+        if (!validationUtils.isPositiveNumber(this.file.scanDataModel.initiateScanLinesCount)) {
+            throw new Error(`Invalid or no initiateScanLinesCount was found: ${this.file.scanDataModel.initiateScanLinesCount} (1000048)`);
         }
     }
 
@@ -228,7 +228,7 @@ class ScanService {
     validateScanResults() {
         // Validate basic parameters.
         logUtils.logStatus('Validating scan results.');
-        const { scanRounds } = this.file.scanData;
+        const { scanRounds } = this.file.scanDataModel;
         // Validate at least 1 scan round item.
         if (!validationUtils.isExists(scanRounds)) {
             throw new Error(`Invalid or no scanRounds was found: ${scanRounds} (1000054)`);
@@ -241,9 +241,9 @@ class ScanService {
         // Compare the two scans results.
         logUtils.logStatus('Verifying email addresses scans.');
         if (scanRounds[0].scanRoundEmailAddressesCount !== scanRounds[1].scanRoundEmailAddressesCount ||
-            this.file.scanData.initiateScanLinesCount !== scanRounds[0].scanRoundLinesCount) {
-            const title = 'Unmatch scan results (1000056)';
-            logUtils.logStatus(`${title}:`, this.file.scanData);
+            this.file.scanDataModel.initiateScanLinesCount !== scanRounds[0].scanRoundLinesCount) {
+            const title = 'Mismatch scan results (1000056)';
+            logUtils.logStatus(`${title}:`, this.file.scanDataModel);
             throw new Error(title);
         }
     }

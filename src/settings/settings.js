@@ -62,7 +62,7 @@ const settings = {
     // (Working example: 'C:\\Or\\Web\\mbox-crawler\\mbox-crawler').
     APPLICATION_PATH: 'mbox-crawler',
     // Determine the backups directory which all the local backup will be created to.
-    // (Working example: 'C:\\Or\\Web\\Crawler\\backups').
+    // (Working example: 'C:\\Or\\Web\\mbox-crawler\\backups').
     BACKUPS_PATH: 'backups',
     // Determine the dist directory path which there, all the outcome of the logs will be created.
     // (Working example: 'C:\\Or\\Web\\mbox-crawler\\mbox-crawler\\dist').

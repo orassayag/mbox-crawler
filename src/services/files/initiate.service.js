@@ -1,5 +1,5 @@
 const settings = require('../../settings/settings');
-const { ScriptType } = require('../../core/enums');
+const { ScriptTypeEnum } = require('../../core/enums');
 const globalUtils = require('../../utils/files/global.utils');
 const { fileUtils, pathUtils, validationUtils } = require('../../utils');
 
@@ -50,10 +50,10 @@ class InitiateService {
 
 	validateScriptType() {
 		if (!this.scriptType || !validationUtils.isValidEnum({
-			enum: ScriptType,
+			enum: ScriptTypeEnum,
 			value: this.scriptType
 		})) {
-			throw new Error('Invalid or no ScriptType parameter was found (1000036)');
+			throw new Error('Invalid or no ScriptTypeEnum parameter was found (1000036)');
 		}
 	}
 
@@ -73,7 +73,7 @@ class InitiateService {
 			PACKAGE_LOCK_JSON_PATH } = settings;
 		// ===DYNAMIC PATH=== //
 		settings.APPLICATION_PATH = pathUtils.getJoinPath({ targetPath: OUTER_APPLICATION_PATH, targetName: APPLICATION_PATH });
-		if (this.scriptType === ScriptType.BACKUP) {
+		if (this.scriptType === ScriptTypeEnum.BACKUP) {
 			settings.BACKUPS_PATH = pathUtils.getJoinPath({ targetPath: OUTER_APPLICATION_PATH, targetName: BACKUPS_PATH });
 			settings.SOURCES_PATH = pathUtils.getJoinPath({ targetPath: INNER_APPLICATION_PATH, targetName: SOURCES_PATH });
 		}
@@ -101,7 +101,7 @@ class InitiateService {
 	}
 
 	validateStrings() {
-		const keys = this.scriptType === ScriptType.BACKUP ? ['BACKUPS_PATH', 'SOURCES_PATH'] : [];
+		const keys = this.scriptType === ScriptTypeEnum.BACKUP ? ['BACKUPS_PATH', 'SOURCES_PATH'] : [];
 		[
 			...keys,
 			// ===FILE NAME=== //
@@ -133,7 +133,7 @@ class InitiateService {
 	}
 
 	validateDirectories() {
-		const keys = this.scriptType === ScriptType.BACKUP ? ['BACKUPS_PATH', 'SOURCES_PATH'] : [];
+		const keys = this.scriptType === ScriptTypeEnum.BACKUP ? ['BACKUPS_PATH', 'SOURCES_PATH'] : [];
 		[
 			...keys,
 			// ===ROOT PATH=== //

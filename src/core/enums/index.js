@@ -1,4 +1,4 @@
-const { PackageType, ScriptType } = require('../enums/files/system.enum');
-const { Color, ColorCode } = require('../enums/files/text.enum');
+const { PackageTypeEnum, ScriptTypeEnum } = require('../enums/files/system.enum');
+const { ColorEnum, ColorCodeEnum } = require('../enums/files/text.enum');
 
-module.exports = { Color, ColorCode, PackageType, ScriptType };
+module.exports = { ColorEnum, ColorCodeEnum, PackageTypeEnum, ScriptTypeEnum };

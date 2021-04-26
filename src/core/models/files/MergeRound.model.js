@@ -1,4 +1,4 @@
-class MergeRound {
+class MergeRoundModel {
 
     constructor(mergeRoundData) {
         const { mergeRoundNumber, mergeRoundTXTFilesCount, mergeRoundEmailAddressesCount,
@@ -11,4 +11,4 @@ class MergeRound {
     }
 }
 
-module.exports = MergeRound;
+module.exports = MergeRoundModel;

@@ -1,7 +1,6 @@
 const globalUtils = require('../../utils/files/global.utils');
 const { emailUtils, fileUtils, logUtils, textUtils, validationUtils } = require('../../utils');
 
-
 class ValidateService {
 
     constructor(data) {

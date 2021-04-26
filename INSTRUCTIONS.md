@@ -6,9 +6,9 @@ FAST & BASIC START.
 1. Open the project in IDE (Current to 03/11/2021 I'm using VSCode).
 2. Place the MBOX file in the src/sources directory.
 3. Open the following file in the src/settings/settings.js file.
-4. Next - Time to install the NPM packages. On the terminal run 'npm run i'.
+4. Next - Time to install the NPM packages. In the terminal run 'npm run i'.
 5. You are ready to start to crawl.
-6. On terminal run 'npm start'. If everything goes well, you will start to see the console status line appear.
+6. In the terminal run 'npm start'. If everything goes well, you will start to see the console status line appear.
 7. If you see any error - Need to check what's changed. Current to 03/11/2021, It works fine.
 8. If no errors and the progress works OK, make sure to check on dist/ that all TXT files created successfully.
 9. Successful running application on production/development should look like this:
@@ -110,7 +110,6 @@ This summary log can be found at C:\Or\Web\mbox-crawler\mbox-crawler\dist\crt_fi
 ===FILE: crt.mbox - SUMMARY STEP - END===
 ===FILE: crt.mbox - PROCESS END (1/1)===
 PS C:\Or\Web\mbox-crawler\mbox-crawler>
-
 
 ## Author
 

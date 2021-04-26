@@ -61,19 +61,19 @@ class FinalizeService {
 
     validateProcessData() {
         logUtils.logStatus('Validating finalize results.');
-        const { scanData, crawlData, mergeData, summaryData, sourceMBOXFile, distFinalMergeViewTXTFile,
+        const { scanDataModel, crawlDataModel, mergeDataModel, summaryDataModel, sourceMBOXFile, distFinalMergeViewTXTFile,
             distFinalListViewTXTFile, distFinalValidTXTFile, distFinalInvalidTXTFile } = this.file;
-        if (!scanData) {
-            throw new Error(`Invalid or no scanData was found: ${scanData} (1000012)`);
+        if (!scanDataModel) {
+            throw new Error(`Invalid or no scanDataModel was found: ${scanDataModel} (1000012)`);
         }
-        if (!crawlData) {
-            throw new Error(`Invalid or no crawlData was found: ${crawlData} (1000013)`);
+        if (!crawlDataModel) {
+            throw new Error(`Invalid or no crawlDataModel was found: ${crawlDataModel} (1000013)`);
         }
-        if (!mergeData) {
-            throw new Error(`Invalid or no mergeData was found: ${mergeData} (1000014)`);
+        if (!mergeDataModel) {
+            throw new Error(`Invalid or no mergeDataModel was found: ${mergeDataModel} (1000014)`);
         }
-        if (!summaryData) {
-            throw new Error(`Invalid or no summaryData was found: ${summaryData} (1000015)`);
+        if (!summaryDataModel) {
+            throw new Error(`Invalid or no summaryDataModel was found: ${summaryDataModel} (1000015)`);
         }
         if (!sourceMBOXFile) {
             throw new Error(`Invalid or no sourceMBOXFile was found: ${sourceMBOXFile} (1000016)`);
@@ -92,8 +92,8 @@ class FinalizeService {
         }
     }
 
-    validateMBOXResults(summaryData) {
-        const { sourceMBOXFile, finalListViewTXTFile, finalMergeViewTXTFile, validEmailAddressesTXTFile, invalidEmailAddressesTXTFile } = summaryData;
+    validateMBOXResults(summaryDataModel) {
+        const { sourceMBOXFile, finalListViewTXTFile, finalMergeViewTXTFile, validEmailAddressesTXTFile, invalidEmailAddressesTXTFile } = summaryDataModel;
         if (!sourceMBOXFile) {
             throw new Error(`Invalid or no sourceMBOXFile was found: ${sourceMBOXFile} (1000021)`);
         }
@@ -111,10 +111,10 @@ class FinalizeService {
         }
     }
 
-    validateStatisticsResults(statisticsData) {
+    validateStatisticsResults(statisticsDataModel) {
         const { totalMBOXFileEmailAddressesCount, totalFinalEmailAddressesCount, totalMBOXFileLinesCount,
             totalEmailMessagesCount, totalCrawlCreateTXTFilesCount, totalMergeRoundsCount,
-            totalMergeCreateTXTFilesCount } = statisticsData;
+            totalMergeCreateTXTFilesCount } = statisticsDataModel;
         if (!totalMBOXFileEmailAddressesCount) {
             throw new Error(`Invalid or no totalMBOXFileEmailAddressesCount was found: ${totalMBOXFileEmailAddressesCount} (1000026)`);
         }
@@ -138,8 +138,8 @@ class FinalizeService {
         }
     }
 
-    validateTimesResults(timesData) {
-        const { startProcessDateTimeDisplay, endProcessDateTimeDisplay, totalProcessTimeDisplay } = timesData;
+    validateTimesResults(timesDataModel) {
+        const { startProcessDateTimeDisplay, endProcessDateTimeDisplay, totalProcessTimeDisplay } = timesDataModel;
         if (!startProcessDateTimeDisplay) {
             throw new Error(`Invalid or no startProcessDateTimeDisplay was found: ${startProcessDateTimeDisplay} (1000033)`);
         }
@@ -152,14 +152,14 @@ class FinalizeService {
     }
 
     validateFinalizeResults() {
-        const { summaryData } = this.file;
-        const { statisticsData, timesData } = summaryData;
+        const { summaryDataModel } = this.file;
+        const { statisticsDataModel, timesDataModel } = summaryDataModel;
         // Validate that all process data exists.
         this.validateProcessData();
         // Validate all summary data.
-        this.validateMBOXResults(summaryData);
-        this.validateStatisticsResults(statisticsData);
-        this.validateTimesResults(timesData);
+        this.validateMBOXResults(summaryDataModel);
+        this.validateStatisticsResults(statisticsDataModel);
+        this.validateTimesResults(timesDataModel);
     }
 }
 

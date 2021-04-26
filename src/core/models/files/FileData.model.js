@@ -1,7 +1,7 @@
 const settings = require('../../../settings/settings');
 const { fileUtils, pathUtils, textUtils } = require('../../../utils');
 
-class FileData {
+class FileDataModel {
 
     constructor(fileData) {
         const { fileName, fileKeyName, fileTargetPath, isMBOX } = fileData;
@@ -31,4 +31,4 @@ class FileData {
     }
 }
 
-module.exports = FileData;
+module.exports = FileDataModel;

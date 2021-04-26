@@ -1,4 +1,4 @@
-class CrawlData {
+class CrawlDataModel {
 
     constructor(crawlData) {
         const { crawlLinesCount, crawlEmailAddressesCount, crawlTXTFilesCount } = crawlData;
@@ -8,4 +8,4 @@ class CrawlData {
     }
 }
 
-module.exports = CrawlData;
+module.exports = CrawlDataModel;

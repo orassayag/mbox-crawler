@@ -1,7 +1,7 @@
 const Mbox = require('node-mbox');
 const LineByLineReader = require('line-by-line');
-const { PackageType } = require('../../core/enums');
-const fileUtils = require('../files/file.utils');
+const { PackageTypeEnum } = require('../../core/enums');
+const fileUtils = require('./file.utils');
 
 class StreamUtils {
 
@@ -13,16 +13,17 @@ class StreamUtils {
         // Check if the file path exists.
         await fileUtils.isPathExists(targetPath);
         switch (packageType) {
-            case PackageType.LINE_BY_LINE: {
+            case PackageTypeEnum.LINE_BY_LINE: {
                 stream = new LineByLineReader(targetPath);
                 break;
             }
-            case PackageType.NODE_MBOX: {
+            case PackageTypeEnum.NODE_MBOX: {
                 stream = new Mbox(targetPath, { streaming: true });
                 break;
             }
-            default:
+            default: {
                 throw new Error(`packageType not exists: ${packageType} (1000076)`);
+            }
         }
         return stream;
     }

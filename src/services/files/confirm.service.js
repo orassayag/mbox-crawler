@@ -19,7 +19,7 @@ class ConfirmService {
             MAXIMUM_FILE_SIZE_BYTES_PER_MBOX_FILE } = this.settings;
         // Validate all parameters.
         logUtils.logStatus('Verifying MBOX file limits.');
-        const { scanRoundEmailMessagesCount, scanRoundEmailAddressesCount, scanRoundLinesCount } = this.file.scanData.scanRounds[0];
+        const { scanRoundEmailMessagesCount, scanRoundEmailAddressesCount, scanRoundLinesCount } = this.file.scanDataModel.scanRounds[0];
         const fileSize = this.file.sourceMBOXFile.fileSize;
         if (fileSize < MINIMUM_FILE_SIZE_BYTES_PER_MBOX_FILE) {
             throw new Error(`File size (${fileSize}) less than the minimum size (${MINIMUM_FILE_SIZE_BYTES_PER_MBOX_FILE}) (1000003)`);

@@ -1,5 +1,5 @@
 const settings = require('../settings/settings');
-const { GlobalSummaryData } = require('../core/models');
+const { GlobalSummaryDataModel } = require('../core/models');
 const { ConfirmService, CrawlService, FinalizeService, InitiateProcessService, MergeService, PostProcessService,
     PreProcessService, ScanService, SummaryService, ValidateService } = require('../services');
 const { logUtils } = require('../utils');
@@ -8,7 +8,7 @@ class CrawlLogic {
 
     constructor() {
         // ===SUMMARY=== //
-        this.globalSummaryData = new GlobalSummaryData();
+        this.globalSummaryDataModel = new GlobalSummaryDataModel();
         // ===LIMIT=== //
         this.emailAddressesCrawlLimitCount = 0;
         this.emailAddressesMergeLimitCount = 0;
@@ -25,8 +25,8 @@ class CrawlLogic {
         this.distFinalSummaryFileName = null;
         // ===FILE PROCESS=== //
         this.filesList = [];
-        this.currentFileProcessIndex = null;
-        this.currentFileProcess = null;
+        this.currentFileProcessModelIndex = null;
+        this.currentFileProcessModel = null;
     }
 
     // This method will run all the methods of the crawl process.
@@ -43,8 +43,8 @@ class CrawlLogic {
         await this.initiate();
         // Process all the MBOX files.
         for (let i = 0, length = this.filesList.length; i < length; i++) {
-            this.currentFileProcessIndex = i;
-            this.currentFileProcess = this.filesList[i];
+            this.currentFileProcessModelIndex = i;
+            this.currentFileProcessModel = this.filesList[i];
             await this.processFile();
         }
     }
@@ -152,8 +152,8 @@ class CrawlLogic {
             stepName: '',
             logic: async () => {
                 return await new PreProcessService({
-                    file: this.currentFileProcess,
-                    currentFileProcessIndex: this.currentFileProcessIndex,
+                    file: this.currentFileProcessModel,
+                    currentFileProcessModelIndex: this.currentFileProcessModelIndex,
                     totalFilesProcessCount: this.filesList.length
                 }).initiatePreProcess();
             },
@@ -166,7 +166,7 @@ class CrawlLogic {
             stepName: 'SCAN',
             logic: async () => {
                 return await new ScanService({
-                    file: this.currentFileProcess
+                    file: this.currentFileProcessModel
                 }).initiateScan();
             },
             isFileStep: true
@@ -178,7 +178,7 @@ class CrawlLogic {
             stepName: 'CONFIRM',
             logic: async () => {
                 return await new ConfirmService({
-                    file: this.currentFileProcess,
+                    file: this.currentFileProcessModel,
                     settings: settings
                 }).initiateConfirm();
             },
@@ -191,7 +191,7 @@ class CrawlLogic {
             stepName: 'CRAWL',
             logic: async () => {
                 return await new CrawlService({
-                    file: this.currentFileProcess,
+                    file: this.currentFileProcessModel,
                     emailAddressesCrawlLimitCount: this.emailAddressesCrawlLimitCount
                 }).initiateCrawl();
             },
@@ -204,7 +204,7 @@ class CrawlLogic {
             stepName: 'MERGE',
             logic: async () => {
                 return await new MergeService({
-                    file: this.currentFileProcess,
+                    file: this.currentFileProcessModel,
                     emailAddressesMergeLimitCount: this.emailAddressesMergeLimitCount,
                     maximumMergeRoundsCount: this.maximumMergeRoundsCount,
                     advanceMergeMultiply: this.advanceMergeMultiply
@@ -219,7 +219,7 @@ class CrawlLogic {
             stepName: 'VALIDATION',
             logic: async () => {
                 return await new ValidateService({
-                    file: this.currentFileProcess,
+                    file: this.currentFileProcessModel,
                     secondsDelayBetweenValidations: this.secondsDelayBetweenValidations,
                     maximumEmailCharactersLength: this.maximumEmailCharactersLength
                 }).initiateValidate();
@@ -233,7 +233,7 @@ class CrawlLogic {
             stepName: 'FINALIZE',
             logic: async () => {
                 return await new FinalizeService({
-                    file: this.currentFileProcess,
+                    file: this.currentFileProcessModel,
                     distPath: this.distPath,
                     distTemporaryFileName: this.distTemporaryFileName
                 }).initiateFinalize();
@@ -247,7 +247,7 @@ class CrawlLogic {
             stepName: 'SUMMARY',
             logic: async () => {
                 return await new SummaryService({
-                    file: this.currentFileProcess
+                    file: this.currentFileProcessModel
                 }).initiateSummary();
             },
             isFileStep: true
@@ -259,8 +259,8 @@ class CrawlLogic {
             stepName: '',
             logic: async () => {
                 return await new PostProcessService({
-                    file: this.currentFileProcess,
-                    currentFileProcessIndex: this.currentFileProcessIndex,
+                    file: this.currentFileProcessModel,
+                    currentFileProcessModelIndex: this.currentFileProcessModelIndex,
                     totalFilesProcessCount: this.filesList.length
                 }).initiatePostProcess();
             },
@@ -270,14 +270,14 @@ class CrawlLogic {
 
     async step(data) {
         const { stepName, logic, isFileStep } = data;
-        const fileNameDisplay = isFileStep ? this.filesList[this.currentFileProcessIndex].sourceMBOXFile.fileNameDisplay : '';
+        const fileNameDisplay = isFileStep ? this.filesList[this.currentFileProcessModelIndex].sourceMBOXFile.fileNameDisplay : '';
         if (stepName) {
             logUtils.logColorStatus({
                 status: `${fileNameDisplay ? `FILE: ${fileNameDisplay} - ` : ''}${stepName} STEP - START`,
                 color: 'Blue'
             });
         }
-        this.filesList[this.currentFileProcessIndex] = await logic();
+        this.filesList[this.currentFileProcessModelIndex] = await logic();
         if (stepName) {
             logUtils.logColorStatus({
                 status: `${fileNameDisplay ? `FILE: ${fileNameDisplay} - ` : ''}${stepName} STEP - END`,

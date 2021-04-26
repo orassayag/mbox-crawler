@@ -13,7 +13,7 @@ class MergeService {
     }
 
     async initiateMerge() {
-        let currentTXTFilesCount = this.file.crawlData.crawlTXTFilesCount;
+        let currentTXTFilesCount = this.file.crawlDataModel.crawlTXTFilesCount;
         let currentRoundNumber = 0;
         while (currentRoundNumber === 0 || (currentTXTFilesCount !== 1 && currentRoundNumber <= this.maximumMergeRoundsCount)) {
             const roundMergeResults = await this.mergeTXTFiles({
@@ -181,7 +181,7 @@ class MergeService {
 
     validateMergeResults() {
         logUtils.logStatus('Validating merge results.');
-        const { mergeRounds } = this.file.mergeData;
+        const { mergeRounds } = this.file.mergeDataModel;
         // Validate at least 1 merge round item.
         if (!validationUtils.isExists(mergeRounds)) {
             throw new Error(`Invalid or no mergeRounds was found: ${mergeRounds} (1000046)`);

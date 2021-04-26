@@ -1,8 +1,8 @@
-class MergeData {
+class MergeDataModel {
 
     constructor() {
         this.mergeRounds = [];
     }
 }
 
-module.exports = MergeData;
+module.exports = MergeDataModel;

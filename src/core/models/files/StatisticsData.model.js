@@ -1,6 +1,6 @@
 const { textUtils } = require('../../../utils');
 
-class StatisticsData {
+class StatisticsDataModel {
 
     constructor() {
         // Original fields.
@@ -41,4 +41,4 @@ class StatisticsData {
     }
 }
 
-module.exports = StatisticsData;
+module.exports = StatisticsDataModel;

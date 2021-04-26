@@ -1,6 +1,6 @@
 const checkDiskSpace = require('check-disk-space');
-const pathUtils = require('../files/path.utils');
-const validationUtils = require('../files/validation.utils');
+const pathUtils = require('./path.utils');
+const validationUtils = require('./validation.utils');
 
 class SystemUtils {
 

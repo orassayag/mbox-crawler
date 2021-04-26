@@ -7,12 +7,12 @@ Built in January 2019. A Node.js application to scan the Gmail MBOX files (that 
 Clone the application to your computer.
 Steps to view the solution:
 1. Open server application on IDE (I use VSCode).
-2. Terminal: npm i
-3. In terminal: npm start
+2. In the terminal: npm i
+3. In the terminal: npm start
 
 ### Crawl MBOX Files Script:
 
-In terminal: npm run crawl
+In the terminal: npm run crawl
 -Instructions & How to use:
 1. Place a valid MBOX file in the '/sources/' directory.
 2. Wait for the process to end.

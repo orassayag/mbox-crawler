@@ -8,27 +8,34 @@ class SummaryService {
     }
 
     async initiateSummary() {
-        const { summaryData } = this.file;
-        const { statisticsData, timesData } = summaryData;
+        const { summaryDataModel } = this.file;
+        const { statisticsDataModel, timesDataModel } = summaryDataModel;
+        const { totalMBOXFileEmailAddressesCountDisplay, totalFinalEmailAddressesCountDisplay, totalRemoveEmailAddressesCountDisplay,
+            totalValidEmailAddressesCountDisplay, totalInvalidEmailAddressesCountDisplay, totalMBOXFileLinesCountDisplay,
+            totalEmailMessagesCountDisplay, totalCrawlCreateTXTFilesCountDisplay, totalMergeRoundsCountDisplay,
+            totalMergeCreateTXTFilesCountDisplay } = statisticsDataModel;
+        const { startProcessDateTimeDisplay, endProcessDateTimeDisplay, totalProcessTimeDisplay } = timesDataModel;
+        const { sourceMBOXFile, finalListViewTXTFile, finalMergeViewTXTFile, validEmailAddressesTXTFile,
+            invalidEmailAddressesTXTFile } = summaryDataModel;
         const fileSummaryData = [
-            ['MBOX File', summaryData.sourceMBOXFile, 'The original MBOX file name and size.'],
-            ['Total MBOX File Email Addresses Count', statisticsData.totalMBOXFileEmailAddressesCountDisplay, 'The total number of email addresses.'],
-            ['Total Final Email Addresses Count', statisticsData.totalFinalEmailAddressesCountDisplay, 'The total final unique email addresses count.'],
-            ['Start Process Date Time', timesData.startProcessDateTimeDisplay, 'The start date time of the file process.'],
-            ['End Process Date Time', timesData.endProcessDateTimeDisplay, 'The end date time of the file process.'],
-            ['Total Process Time Display', timesData.totalProcessTimeDisplay, 'The total time took the file process to run.'],
-            ['Total Removed Email Addresses Count', statisticsData.totalRemoveEmailAddressesCountDisplay, 'The total email addresses count that removed (duplicates).'],
-            ['Total Valid Email Addresses Count', statisticsData.totalValidEmailAddressesCountDisplay, 'The total final valid email addresses count.'],
-            ['Total Invalid Email Addresses Count', statisticsData.totalInvalidEmailAddressesCountDisplay, 'The total final invalid email addresses count.'],
-            ['Final List View TXT File', summaryData.finalListViewTXTFile, 'The name and the size of the final email addresses TXT file in list view.'],
-            ['Final Merge View TXT File', summaryData.finalMergeViewTXTFile, 'The name and the size of the final email addresses TXT file in merge view.'],
-            ['Valid Email Addresses TXT File', summaryData.validEmailAddressesTXTFile, 'The name and the size of the valid email addresses TXT file in list view.'],
-            ['Invalid Email Addresses TXT File', summaryData.invalidEmailAddressesTXTFile, 'The name and the size of the invalid email addresses TXT file in list view.'],
-            ['Total MBOX Lines Count', statisticsData.totalMBOXFileLinesCountDisplay, 'The total number of lines the original MBOX file contain.'],
-            ['Total Email Items Count', statisticsData.totalEmailMessagesCountDisplay, 'The total number of email messages the original MBOX file contain.'],
-            ['Total Crawl Create TXT Files Count', statisticsData.totalCrawlCreateTXTFilesCountDisplay, 'The total number of TXT files created on the crawl step.'],
-            ['Total Merge Rounds Count', statisticsData.totalMergeRoundsCountDisplay, 'The total number of merge rounds in the merge step.'],
-            ['Total Merge Create TXT Files Count', statisticsData.totalMergeCreateTXTFilesCountDisplay, 'The total number of TXT files created on the merge step.']
+            ['MBOX File', sourceMBOXFile, 'The original MBOX file name and size.'],
+            ['Total MBOX File Email Addresses Count', totalMBOXFileEmailAddressesCountDisplay, 'The total number of email addresses.'],
+            ['Total Final Email Addresses Count', totalFinalEmailAddressesCountDisplay, 'The total final unique email addresses count.'],
+            ['Start Process Date Time', startProcessDateTimeDisplay, 'The start date time of the file process.'],
+            ['End Process Date Time', endProcessDateTimeDisplay, 'The end date time of the file process.'],
+            ['Total Process Time Display', totalProcessTimeDisplay, 'The total time took the file process to run.'],
+            ['Total Removed Email Addresses Count', totalRemoveEmailAddressesCountDisplay, 'The total email addresses count that removed (duplicates).'],
+            ['Total Valid Email Addresses Count', totalValidEmailAddressesCountDisplay, 'The total final valid email addresses count.'],
+            ['Total Invalid Email Addresses Count', totalInvalidEmailAddressesCountDisplay, 'The total final invalid email addresses count.'],
+            ['Final List View TXT File', finalListViewTXTFile, 'The name and the size of the final email addresses TXT file in list view.'],
+            ['Final Merge View TXT File', finalMergeViewTXTFile, 'The name and the size of the final email addresses TXT file in merge view.'],
+            ['Valid Email Addresses TXT File', validEmailAddressesTXTFile, 'The name and the size of the valid email addresses TXT file in list view.'],
+            ['Invalid Email Addresses TXT File', invalidEmailAddressesTXTFile, 'The name and the size of the invalid email addresses TXT file in list view.'],
+            ['Total MBOX Lines Count', totalMBOXFileLinesCountDisplay, 'The total number of lines the original MBOX file contain.'],
+            ['Total Email Items Count', totalEmailMessagesCountDisplay, 'The total number of email messages the original MBOX file contain.'],
+            ['Total Crawl Create TXT Files Count', totalCrawlCreateTXTFilesCountDisplay, 'The total number of TXT files created on the crawl step.'],
+            ['Total Merge Rounds Count', totalMergeRoundsCountDisplay, 'The total number of merge rounds in the merge step.'],
+            ['Total Merge Create TXT Files Count', totalMergeCreateTXTFilesCountDisplay, 'The total number of TXT files created on the merge step.']
         ];
         const summaryFilePath = this.file.distFinalSummaryTXTFile.filePath;
         await this.createSummaryFile({
