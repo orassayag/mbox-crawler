@@ -1,6 +1,7 @@
 Complete + canceled tasks:
 ==========================
 -Update packages + Recreate package-lock.json. *
+-Update packages + Recreate package-lock.json. *
 -Clear unused enums and make sure all in used really exists. *
 -Remove the 'destination' parameter in the 'filterDirectories' method + Verify that backup still works. *
 -Rename and check: countLimitService.countLimitData.millisecondsSendEmailDelayCount. *
