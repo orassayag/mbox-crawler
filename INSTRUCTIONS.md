@@ -106,7 +106,7 @@ MBOX files found:
 ║ Total Merge Create TXT Files Count    │ 3                                                            │ The total number of TXT files created on the merge step.                    ║
 ╚═══════════════════════════════════════╧══════════════════════════════════════════════════════════════╧═════════════════════════════════════════════════════════════════════════════╝
 
-This summary log can be found at C:\Or\Web\mbox-crawler\mbox-crawler\dist\crt_final_summary_20210311.txt
+This summary log can be found at C:\mbox-crawler\dist\crt_final_summary_20210311.txt
 ===FILE: crt.mbox - SUMMARY STEP - END===
 ===FILE: crt.mbox - PROCESS END (1/1)===
 PS C:\Or\Web\mbox-crawler\mbox-crawler>
@@ -117,4 +117,4 @@ PS C:\Or\Web\mbox-crawler\mbox-crawler>
 * Or Assayag <orassayag@gmail.com>
 * GitHub: https://github.com/orassayag
 * StackOverFlow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
-* LinkedIn: https://il.linkedin.com/in/orassayag
+* LinkedIn: https://linkedin.com/in/orassayag
