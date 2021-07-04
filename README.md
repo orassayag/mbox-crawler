@@ -7,12 +7,12 @@ Built in January 2019. A Node.js application to scan the Gmail MBOX files (that 
 Clone the application to your computer.
 Steps to view the solution:
 1. Open server application on IDE (I use VSCode).
-2. In the terminal: 'npm i'
-3. In the terminal: 'npm start'.
+2. In the terminal run: 'npm i'
+3. In the terminal run: 'npm start'.
 
 ### Crawl MBOX Files Script:
 
-In the terminal: 'npm run crawl'.
+In the terminal run: 'npm run crawl'.
 -Instructions & How to use:
 1. Place a valid MBOX file in the '/sources/' directory.
 2. Wait for the process to end.
@@ -28,7 +28,7 @@ In the terminal: 'npm run crawl'.
 10. Once again, Each email address you add to Google Contacts, remove it from the list.
 11. After done, replace the new final TXT file with the old one.
 
-Happy testing! :)
+Happy testing! :).
 
 ### Prerequisites
 
@@ -36,8 +36,8 @@ You'll need to install VSCode, Node, and clone the application, and in the termi
 
 ## Built With
 
-* [Node.js](https://nodejs.org/en/) - The web framework used - Server side.
-* [Git](https://git-scm.com/) - Source management.
+* [Node.js](https://nodejs.org/en) - The web framework used - Server side.
+* [Git](https://git-scm.com) - Source management.
 
 ## Contributing
 
@@ -45,7 +45,7 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+We use [SemVer](http://semver.org) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
 ## Author
 
