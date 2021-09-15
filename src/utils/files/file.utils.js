@@ -86,7 +86,7 @@ class FileUtils {
     }
 
     async removeDirectoryIfExists(targetPath) {
-        if (!await this.isPathExists(targetPath)) {
+        if (await this.isPathExists(targetPath)) {
             await fs.remove(targetPath);
         }
     }
