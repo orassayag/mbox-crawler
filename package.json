@@ -63,8 +63,8 @@
     "validator": "^13.7.0"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.18.2",
-    "eslint": "^8.19.0",
-    "@types/node": "^18.0.4"
+    "@babel/eslint-parser": "^7.18.9",
+    "eslint": "^8.20.0",
+    "@types/node": "^18.0.6"
   }
 }
