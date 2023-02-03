@@ -60,7 +60,7 @@
     "line-by-line": "^0.1.6",
     "node-mbox": "^1.0.0",
     "table": "^6.8.1",
-    "validator": "^13.7.0"
+    "validator": "^13.9.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.19.1",
