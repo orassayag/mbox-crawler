@@ -2,26 +2,31 @@
   "name": "mbox-crawler",
   "version": "1.0.0",
   "private": false,
-  "description": "A Node.js application to scan the gmail MBOX files (that contains all the inbox/sent email messages). The process will contain verification of the email messages count, and all email addresses count, validate each email address, and in the end, export all email addresses to a TXT file. Doing all of this, without any traditional database involved. Also, to build a script that merges a couple of merged TXT files, and pulls out their diff.",
+  "description": "A Node.js application to process Gmail MBOX files and extract, validate, and deduplicate email addresses with stream-based processing for efficient handling of large email archives.",
   "repository": {
     "type": "git",
     "url": "git://github.com/orassayag/mbox-crawler.git"
   },
   "keywords": [
-    "txt",
-    "TXT",
-    "data",
-    "text",
-    "MBOX",
     "mbox",
     "email",
-    "email message",
-    "email messages",
-    "email address",
-    "emails",
-    "email addresses"
+    "email-extraction",
+    "email-parser",
+    "email-validation",
+    "gmail",
+    "gmail-export",
+    "email-addresses",
+    "deduplication",
+    "contact-management",
+    "email-crawler",
+    "stream-processing",
+    "node",
+    "nodejs",
+    "email-archive",
+    "contacts",
+    "email-mining"
   ],
-  "license": "UNLICENSED",
+  "license": "MIT",
   "author": "Or Assayag <orassayag@gmail.com>",
   "contributors": [
     {
@@ -37,7 +42,9 @@
     ".gitignore",
     ".jsbeautifyrc",
     ".npmignore",
+    "CONTRIBUTING.md",
     "INSTRUCTIONS.md",
+    "LICENSE",
     "package-lock.json",
     "package.json",
     "README.md"
@@ -63,6 +70,6 @@
     "validator": "^13.15.26"
   },
   "devDependencies": {
-    "eslint": "^10.1.0"
+    "eslint": "^10.0.2"
   }
 }
