@@ -1,4 +1,29 @@
-# Instructions
+# Setup and Usage Instructions
+
+## Table of Contents
+
+1. [Prerequisites](#prerequisites)
+2. [Initial Setup](#initial-setup)
+3. [Configuration](#configuration)
+4. [Available Commands](#available-commands)
+5. [Running Scripts](#running-scripts)
+6. [Expected Output](#expected-output)
+7. [Usage Notes](#usage-notes)
+8. [Workflow for Google Contacts](#workflow-for-google-contacts)
+9. [Best Practices](#best-practices)
+10. [Extending the Application](#extending-the-application)
+11. [Troubleshooting](#troubleshooting)
+12. [Support and Resources](#support-and-resources)
+
+## Prerequisites
+
+### System Requirements
+
+- **Node.js**: Version 12 or higher (v18 recommended)
+- **Package Manager**: npm or yarn
+- **Operating System**: Windows, macOS, or Linux
+- **Memory**: 2GB RAM minimum recommended for large files
+- **Disk Space**: Sufficient free space (at least 2.5x the size of your largest MBOX file)
 
 ## Setup Instructions
 
@@ -9,11 +34,34 @@
    ```
 3. Configure settings in `src/settings/settings.js` (see Configuration section below)
 
+## Initial Setup
+
+### 1. Install Dependencies
+
+**Using npm:**
+
+```bash
+npm install
+```
+
+**Using yarn:**
+
+```bash
+yarn install
+```
+
+**Verify installation:**
+
+```bash
+npm test
+```
+
 ## Configuration
 
 Edit the settings in `src/settings/settings.js`:
 
 ### Count & Limit Settings
+
 - `MAXIMUM_EMAIL_ADDRESSES_COUNT_PER_MBOX_FILE`: Maximum email addresses per file (default: 5,000,000)
 - `MAXIMUM_EMAIL_MESSAGES_COUNT_PER_MBOX_FILE`: Maximum email messages per file (default: 1,000,000)
 - `MAXIMUM_LINES_COUNT_PER_MBOX_FILE`: Maximum lines per file (default: 100,000,000)
@@ -27,11 +75,13 @@ Edit the settings in `src/settings/settings.js`:
 - `ADVANCE_MERGE_MULTIPLY`: Merge rate multiplier (default: 2)
 
 ### Path Settings
+
 - `OUTER_APPLICATION_PATH`: Path to the outer application directory
 - `INNER_APPLICATION_PATH`: Path to the source code directory
 - Dynamic paths (calculated at runtime): `BACKUPS_PATH`, `DIST_PATH`, `SOURCES_PATH`, etc.
 
 ### File Name Settings
+
 - `DIST_TEMPORARY_FILE_NAME`: Temporary crawl file name
 - `DIST_FINAL_LIST_VIEW_FILE_NAME`: Final list view output
 - `DIST_FINAL_MERGE_VIEW_FILE_NAME`: Final merge view output
@@ -40,10 +90,48 @@ Edit the settings in `src/settings/settings.js`:
 - `DIST_FINAL_SUMMARY_FILE_NAME`: Summary statistics output
 
 ### Backup Settings
+
 - `IGNORE_DIRECTORIES`: Directories to skip during backup (e.g., `node_modules`, `dist`)
 - `IGNORE_FILES`: Files to skip during backup
 - `INCLUDE_FILES`: Files to force include (e.g., `.gitignore`)
 - `BACKUP_MAXIMUM_DIRECTORY_VERSIONS_COUNT`: Maximum backup versions (default: 50)
+
+## Available Commands
+
+### Development Commands
+
+**Linting and Formatting:**
+
+```bash
+# Check code style and quality
+npm run lint
+
+# Format code using Prettier
+npm run format
+```
+
+**Backup:**
+
+```bash
+# Create a backup of the application
+npm run backup
+```
+
+### Running Scripts
+
+**Main Process:**
+
+```bash
+# Start the MBOX crawling process
+npm start
+```
+
+**Stop Process (Windows):**
+
+```bash
+# Force stop the running process
+npm run stop
+```
 
 ## Running Scripts
 
@@ -56,11 +144,13 @@ npm start
 ```
 
 **Prerequisites:**
+
 - Place valid MBOX file(s) in the `sources/` directory
 - Ensure sufficient disk space for output files
 - Configure settings as needed
 
 **Process Steps:**
+
 1. **Setup**: Validates settings and configuration
 2. **Initiate**: Scans sources directory and validates paths
 3. **Scan**: Counts lines, email messages, and email addresses
@@ -72,6 +162,7 @@ npm start
 9. **Summary**: Generates comprehensive statistics
 
 **Output Files** (in `dist/` directory):
+
 - `{mbox_name}_final_list_view_{date}.txt` - All email addresses (one per line)
 - `{mbox_name}_final_merge_view_{date}.txt` - All email addresses (comma-separated)
 - `{mbox_name}_final_valid_{date}.txt` - Valid email addresses only
@@ -87,6 +178,7 @@ npm run backup
 ```
 
 **What it backs up:**
+
 - All source code files
 - Configuration files
 - Excludes: `node_modules`, `dist`, `.git`, `sources`
@@ -102,7 +194,6 @@ npm run stop
 ## Expected Output
 
 Successful running application should look like this:
-
 
 ```
 ===SETUP STEP - START===
@@ -228,6 +319,55 @@ PS C:\Or\Web\mbox-crawler\mbox-crawler>
    - Only add the new email addresses to Google Contacts
    - Replace the old reference file with the new one
 
+## Best Practices
+
+### Before Running
+
+1. **Check Disk Space**: Ensure you have at least 2.5x the size of the MBOX file available.
+2. **Review Settings**: Verify `MAXIMUM_FILE_SIZE_BYTES_PER_MBOX_FILE` is set correctly for your file.
+3. **Backup Settings**: Make a backup of your `src/settings/settings.js` if you've made significant changes.
+4. **Close Large Apps**: Free up RAM by closing unnecessary applications during large file processing.
+
+### During Processing
+
+1. **Monitor Progress**: Keep the terminal visible to monitor real-time progress and potential warnings.
+2. **Avoid File Access**: Don't open or move files in the `sources/` or `dist/` directories while the script is running.
+3. **Stay Connected**: Ensure your computer doesn't go into sleep mode during long operations.
+
+### After Processing
+
+1. **Verify Summary**: Review the `{mbox_name}_final_summary_{date}.txt` file for any anomalies.
+2. **Clean Up**: If you process many files, remember to move or delete old files from the `dist/` directory.
+3. **Regular Backups**: Use `npm run backup` regularly to save your application state.
+
+## Extending the Application
+
+### Adding New Validation Rules
+
+1. Open `src/utils/files/validation.utils.js`
+2. Add your new validation logic to the relevant functions
+3. Update `src/services/files/validate.service.js` to use the new rules
+
+### Customizing Output Formats
+
+1. Open `src/services/files/summary.service.js`
+2. Modify the `generateSummary` function to include new data points
+3. Update the file writing logic in `src/services/files/finalize.service.js`
+
+## Support and Resources
+
+### Documentation
+
+- [README.md](README.md) - Project overview and architecture
+- [CONTRIBUTING.md](CONTRIBUTING.md) - Guidelines for contributing
+- [CHANGELOG.md](CHANGELOG.md) - Version history and updates
+
+### External Resources
+
+- [Node.js Documentation](https://nodejs.org/docs)
+- [MBOX File Format (Wikipedia)](https://en.wikipedia.org/wiki/Mbox)
+- [Gmail Export Instructions](https://support.google.com/accounts/answer/3024190)
+
 ## Error Codes
 
 All errors include unique codes for easy troubleshooting:
@@ -255,8 +395,8 @@ All errors include unique codes for easy troubleshooting:
 
 ## Author
 
-* **Or Assayag** - *Initial work* - [orassayag](https://github.com/orassayag)
-* Or Assayag <orassayag@gmail.com>
-* GitHub: https://github.com/orassayag
-* StackOverFlow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
-* LinkedIn: https://linkedin.com/in/orassayag
+- **Or Assayag** - _Initial work_ - [orassayag](https://github.com/orassayag)
+- Or Assayag <orassayag@gmail.com>
+- GitHub: https://github.com/orassayag
+- StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
+- LinkedIn: https://linkedin.com/in/orassayag

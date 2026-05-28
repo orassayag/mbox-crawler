@@ -10,6 +10,14 @@ const SummaryService = require('./files/summary.service');
 const ValidateService = require('./files/validate.service');
 
 module.exports = {
-    ConfirmService, CrawlService, FinalizeService, InitiateProcessService, MergeService, PostProcessService,
-    PreProcessService, ScanService, SummaryService, ValidateService
+  ConfirmService,
+  CrawlService,
+  FinalizeService,
+  InitiateProcessService,
+  MergeService,
+  PostProcessService,
+  PreProcessService,
+  ScanService,
+  SummaryService,
+  ValidateService,
 };

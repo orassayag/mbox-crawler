@@ -10,6 +10,14 @@ const timeUtils = require('./files/time.utils');
 const validationUtils = require('./files/validation.utils');
 
 module.exports = {
-    colorUtils, emailUtils, fileUtils, logUtils, pathUtils, streamUtils,
-    systemUtils, textUtils, timeUtils, validationUtils
+  colorUtils,
+  emailUtils,
+  fileUtils,
+  logUtils,
+  pathUtils,
+  streamUtils,
+  systemUtils,
+  textUtils,
+  timeUtils,
+  validationUtils,
 };

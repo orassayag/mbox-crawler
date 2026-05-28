@@ -9,6 +9,7 @@ Everyone is welcome to contribute to this project. Contributing doesn't just mea
 ### Reporting Issues
 
 If you find a bug or have a feature request:
+
 1. Check if the issue already exists in the [GitHub Issues](https://github.com/orassayag/mbox-crawler/issues)
 2. If not, create a new issue with:
    - Clear title and description
@@ -33,11 +34,13 @@ If you find a bug or have a feature request:
 ### Code Style Guidelines
 
 This project uses:
+
 - **JavaScript (ES6+)** with Node.js
 - **ESLint** for code quality
 - Consistent naming conventions and code structure
 
 Before submitting:
+
 ```bash
 # Install dependencies
 npm install
@@ -60,6 +63,7 @@ npm start
 ### Project Structure
 
 The project follows a layered architecture:
+
 - **scripts/**: Entry points for different operations (crawl, backup)
 - **logics/**: Orchestrates the process flow
 - **services/**: Business logic for each step (scan, crawl, merge, validate)
@@ -71,6 +75,7 @@ The project follows a layered architecture:
 ### Adding New Features
 
 When adding new features:
+
 1. Follow the existing architecture patterns
 2. Create appropriate models in `src/core/models/`
 3. Add service logic in `src/services/`
@@ -82,6 +87,7 @@ When adding new features:
 ### Error Code Management
 
 When adding new errors:
+
 1. Use sequential error codes starting from 1000012 (next available)
 2. Format: `(1000XXX)` at the end of the error message
 3. Be descriptive in error messages
@@ -99,9 +105,9 @@ When adding new errors:
 
 Please feel free to contact me with any question, comment, pull-request, issue, or any other thing you have in mind.
 
-* Or Assayag <orassayag@gmail.com>
-* GitHub: https://github.com/orassayag
-* StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
-* LinkedIn: https://linkedin.com/in/orassayag
+- Or Assayag <orassayag@gmail.com>
+- GitHub: https://github.com/orassayag
+- StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
+- LinkedIn: https://linkedin.com/in/orassayag
 
 Thank you for contributing! 🙏

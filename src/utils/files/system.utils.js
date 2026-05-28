@@ -3,23 +3,22 @@ const pathUtils = require('./path.utils');
 const validationUtils = require('./validation.utils');
 
 class SystemUtils {
+  constructor() {}
 
-    constructor() { }
-
-    async validateFreeSpace(fileSize) {
-        if (!validationUtils.isValidNumber(fileSize)) {
-            return;
-        }
-        const fileOSRoot = pathUtils.getRootPath();
-        const diskSizes = await new Promise(resolve => {
-            checkDiskSpace(fileOSRoot).then((diskSpace) => {
-                resolve(diskSpace);
-            });
-        });
-        if ((diskSizes.free + (fileSize % 0.01)) > diskSizes.size) {
-            throw new Error('Not enough space to perform the process (1000077)');
-        }
+  async validateFreeSpace(fileSize) {
+    if (!validationUtils.isValidNumber(fileSize)) {
+      return;
     }
+    const fileOSRoot = pathUtils.getRootPath();
+    const diskSizes = await new Promise((resolve) => {
+      checkDiskSpace(fileOSRoot).then((diskSpace) => {
+        resolve(diskSpace);
+      });
+    });
+    if (diskSizes.free + (fileSize % 0.01) > diskSizes.size) {
+      throw new Error('Not enough space to perform the process (1000077)');
+    }
+  }
 }
 
 module.exports = new SystemUtils();

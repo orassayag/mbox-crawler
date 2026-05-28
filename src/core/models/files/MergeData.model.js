@@ -1,8 +1,7 @@
 class MergeDataModel {
-
-    constructor() {
-        this.mergeRounds = [];
-    }
+  constructor() {
+    this.mergeRounds = [];
+  }
 }
 
 module.exports = MergeDataModel;

@@ -2,11 +2,7 @@
   "name": "mbox-crawler",
   "version": "1.0.0",
   "private": false,
-  "description": "A Node.js application to process Gmail MBOX files and extract, validate, and deduplicate email addresses with stream-based processing for efficient handling of large email archives.",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/orassayag/mbox-crawler.git"
-  },
+  "description": "A Node.js application to scan Gmail MBOX files containing inbox and sent emails. It verifies the total email message count and email address count, validates each address, exports all unique email addresses to a TXT file. Built with stream-based processing for efficient handling of large email bulk",
   "keywords": [
     "mbox",
     "email",
@@ -26,8 +22,24 @@
     "contacts",
     "email-mining"
   ],
+  "homepage": "https://github.com/orassayag/mbox-crawler#readme",
+  "bugs": {
+    "url": "https://github.com/orassayag/mbox-crawler/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/orassayag/mbox-crawler.git"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/orassayag"
+  },
   "license": "MIT",
-  "author": "Or Assayag <orassayag@gmail.com>",
+  "author": {
+    "name": "Or Assayag",
+    "email": "orassayag@gmail.com",
+    "url": "https://github.com/orassayag"
+  },
   "contributors": [
     {
       "name": "Or Assayag",
@@ -35,21 +47,32 @@
       "url": "https://github.com/orassayag"
     }
   ],
+  "type": "commonjs",
+  "main": "src/scripts/crawl.script.js",
   "files": [
+    ".github",
+    ".vscode",
+    "dist",
+    "misc",
+    "sources",
     "src",
     ".eslintignore",
     ".eslintrc",
     ".gitignore",
     ".jsbeautifyrc",
     ".npmignore",
+    ".prettierrc",
+    "CHANGELOG.md",
+    "CODE_OF_CONDUCT.md",
     "CONTRIBUTING.md",
     "INSTRUCTIONS.md",
+    "knip.json",
     "LICENSE",
     "package-lock.json",
     "package.json",
-    "README.md"
+    "README.md",
+    "SECURITY.md"
   ],
-  "main": "src/scripts/crawl.script.js",
   "scripts": {
     "backup": "node src/scripts/backup.script.js",
     "start": "node src/scripts/crawl.script.js",
@@ -66,8 +89,7 @@
     "fs-extra": "^11.3.4",
     "line-by-line": "^0.1.6",
     "node-mbox": "^2.0.0",
-    "table": "^6.9.0",
-    "validator": "^13.15.26"
+    "table": "^6.9.0"
   },
   "devDependencies": {
     "eslint": "^10.0.2"

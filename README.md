@@ -1,10 +1,32 @@
-# MBOX Crawler
+# Mbox Crawler
 
 A Node.js application to scan the Gmail MBOX files (that contains all the inbox/sent email messages). The process will contain verification of the email messages count, and all email addresses count, validate each email address, and in the end, export all email addresses to a TXT file.
 
 Built in 2019 with stream-based processing for efficient handling of large email archives.
 
 ## Features
+
+### Core Capabilities
+
+- **High-Performance MBOX Scanning**: Dual-scan verification using multiple specialized packages.
+- **Efficient Memory Management**: Stream-based processing handles multi-gigabyte files with minimal RAM.
+- **Recursive Deduplication**: Multi-round merge strategy ensures 100% unique email extraction.
+- **Robust Validation**: Built-in email address validation with detailed reporting.
+- **Progress Tracking**: Real-time console progress bars and status updates.
+
+### Technical Excellence
+
+- **Stream-Based Architecture**: Avoids memory overflows by processing files line-by-line.
+- **Atomic Operations**: Writes to temporary files every 100 entries to prevent data loss.
+- **Unique Error System**: Every error includes a unique ID for precise troubleshooting.
+- **Exponential Merge Strategy**: Optimized I/O operations for combining large datasets.
+
+### Developer Experience
+
+- **Clean Configuration**: Centralized settings file for all application limits.
+- **Detailed Logging**: Comprehensive process logs for each step of the pipeline.
+- **Simple Deployment**: Standard Node.js environment with minimal dependencies.
+- **Cross-Platform Support**: Works on Windows, macOS, and Linux.
 
 - 📧 Extracts email addresses from MBOX files (Gmail exports)
 - 🔍 Dual-scan verification using multiple NPM packages
@@ -16,6 +38,33 @@ Built in 2019 with stream-based processing for efficient handling of large email
 - 🔒 Configurable limits and safety checks
 - 📈 Real-time progress display
 - 🗂️ Backup functionality for application data
+
+## Architecture
+
+### Directory Structure
+
+```
+mbox-crawler/
+├── src/
+│   ├── core/
+│   │   ├── enums/          # Enumeration constants
+│   │   └── models/         # Data models
+│   ├── scripts/            # Entry points
+│   ├── services/           # Business logic
+│   ├── settings/           # Configuration
+│   └── utils/              # Utility functions
+├── sources/                # Place MBOX files here
+├── dist/                   # Output files
+├── package.json
+└── README.md
+```
+
+### Design Patterns
+
+- **Service-Oriented Architecture**: Logic split into discrete services (Scan, Crawl, Merge, Validate).
+- **Stream Processing Pattern**: Uses Node.js streams to handle large datasets efficiently.
+- **Singleton Settings**: Centralized configuration management across the application.
+- **Utility Pattern**: Shared logic extracted into specialized utility modules.
 
 ## Architecture Overview
 
@@ -291,6 +340,14 @@ mbox-crawler/
 - Clean and deduplicate email address lists
 - Create mailing lists from email archives
 
+## Best Practices
+
+1. **Memory Optimization**: For files larger than 5GB, ensure at least 2GB of free system RAM.
+2. **Disk Space**: Always maintain free space equal to 2.5x the size of the MBOX file.
+3. **Sequential Processing**: Process one large MBOX file at a time for maximum stability.
+4. **Validation Delays**: Keep the validation delay at 1 second to avoid potential rate limits or high CPU.
+5. **Regular Backups**: Use `npm run backup` before modifying any core logic or settings.
+
 ## Technologies Used
 
 - **Node.js** - Runtime environment
@@ -309,6 +366,15 @@ All errors include unique error codes for easy troubleshooting:
 - Format: `Error message (1000XXX)`
 - Codes range from 1000001 to 1000011
 - Detailed error context logged to console
+
+## Development
+
+### Architecture Principles
+
+1. **Separation of Concerns**: Each service handles exactly one step of the process.
+2. **I/O Efficiency**: Minimize disk reads/writes through batching and streaming.
+3. **Fail-Fast Validation**: Check file limits and disk space before starting heavy processing.
+4. **Immutability**: The original MBOX file is never modified; all outputs go to `dist/`.
 
 ## Contributing
 
@@ -329,10 +395,18 @@ Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for de
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This application has an MIT license - see the [LICENSE](LICENSE) file for details.
+
+## Support
+
+For questions, issues, or contributions:
+
+- **GitHub Issues**: [https://github.com/orassayag/mbox-crawler/issues](https://github.com/orassayag/mbox-crawler/issues)
+- **Email**: orassayag@gmail.com
 
 ## Acknowledgments
 
-- Built for personal email management needs
-- Inspired by the need to maintain contact lists from Gmail exports
-- Designed for efficiency and reliability with large email archives
+- Built for educational and research purposes
+- Respects robots.txt and implements rate limiting
+- Uses user-agent rotation to avoid detection
+- Implements polite crawling practices

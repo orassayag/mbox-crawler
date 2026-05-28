@@ -13,6 +13,17 @@ const SummaryDataModel = require('./files/SummaryData.model');
 const TimesDataModel = require('./files/TimesData.model');
 
 module.exports = {
-    BackupDataModel, BackupDirectoryModel, CrawlDataModel, FileDataModel, FileProcessModel, GlobalSummaryDataModel, MergeDataModel,
-    MergeRoundModel, ScanDataModel, ScanRoundModel, StatisticsDataModel, SummaryDataModel, TimesDataModel
+  BackupDataModel,
+  BackupDirectoryModel,
+  CrawlDataModel,
+  FileDataModel,
+  FileProcessModel,
+  GlobalSummaryDataModel,
+  MergeDataModel,
+  MergeRoundModel,
+  ScanDataModel,
+  ScanRoundModel,
+  StatisticsDataModel,
+  SummaryDataModel,
+  TimesDataModel,
 };
